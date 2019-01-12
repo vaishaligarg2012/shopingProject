@@ -26,7 +26,7 @@
 					aria-labelledby="home-tab">
 					<h3 class="register-heading">Registration</h3>
 					<f:form class="form-horizontal"
-						action="${contextRoot}/${submitRegister}" method="post"
+						action="${contextRoot}/submitRegister" method="post"
 						modelAttribute="userKey">
 						<div class="row register-form">
 							<div class="col-md-6">
@@ -45,7 +45,8 @@
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control"
-										placeholder="Confirm Password *" value="" />
+										path="confirmPassword" placeholder="Confirm Password *" value="" />
+							            <f:errors path = "confirmPassword"/>
 								</div>
 
 							</div>
@@ -58,6 +59,7 @@
 								<div class="form-group">
 									<f:input type="text" name="txtEmpPhone" path="phone"
 										class="form-control" placeholder="Your Phone *" value="" />
+									<f:errors path="phone"/>
 								</div>
 
 								<input type="submit" class="btnRegister" value="Register" />

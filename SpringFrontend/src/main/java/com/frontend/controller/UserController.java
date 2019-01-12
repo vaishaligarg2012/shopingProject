@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.MVCStart.CustomValidations.PasswordValidation;
+import com.MVCStart.CustomValidations.PhoneValidation;
 import com.MVCStart.Daos.UserDao;
 import com.MVCStart.Models.User;
 
@@ -17,6 +20,12 @@ public class UserController {
    
 	     @Autowired
 	     UserDao userDao;
+	     
+	     @Autowired
+	     PhoneValidation phonevalidation;
+	     
+	     @Autowired
+	     PasswordValidation passwordValidation;
 	     @RequestMapping(value="login",method=RequestMethod.GET)
          public ModelAndView loginUser() {
 	    	 User user = new User();
@@ -33,8 +42,10 @@ public class UserController {
 	    	 return mv;
 	    }
 	     
-	     @RequestMapping(value="${contextRoot}/submitRegister", method = RequestMethod.POST)
+	     @RequestMapping(value="submitRegister", method = RequestMethod.POST)
 	     public ModelAndView saveRegister(@Valid @ModelAttribute("userKey") User user ,BindingResult result) {
+	    	 phonevalidation.validate(user,result);
+	    	 passwordValidation.validate(user,result);
 	    	 if(result.hasErrors()) {
 	    		 ModelAndView mv = new ModelAndView("Register");
 		    	 return mv;

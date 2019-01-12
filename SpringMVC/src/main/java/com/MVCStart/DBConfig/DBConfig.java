@@ -58,7 +58,7 @@ public class DBConfig {
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();
 	}
-		
+		 
 	@Bean(name="hibernateTransection")
 	@Autowired
 	public HibernateTransactionManager getHibernateTransectionManager(SessionFactory sessionFactory) {

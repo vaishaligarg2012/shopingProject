@@ -44,8 +44,7 @@ public class CategoryController {
     		mv.addObject("btnLabel","Add Category");
     		mv.addObject("formLabel","Add Category Form");
     		mv.addObject("submitUpdateOrAdd","submitCategory");
-
-    		return mv;	
+            return mv;	
         }else {
 		categoryDao.addCategory(cat);
 		ModelAndView mv=new ModelAndView("ViewAllCategory");

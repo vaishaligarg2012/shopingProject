@@ -17,8 +17,9 @@ public class User {
 	private String email;
 	private String fName;
 	private String lName;
-	@NotNull
+	
 	private String password;
+	private String confirmPassword;
 	private String phone;
 	
 	public String getEmail() {
@@ -53,5 +54,11 @@ public class User {
 		this.phone = phone;
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	
 }
