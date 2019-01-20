@@ -32,8 +32,10 @@ public class Product {
 	
 	private int categoryId;
 	private int supplierId;
+	
 	@Transient
 	MultipartFile pimage1;
+	
 	private String imgname1;
        
 	public MultipartFile getPimage1() {

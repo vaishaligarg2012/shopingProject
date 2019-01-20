@@ -1,12 +1,13 @@
 package com.MVCStart.Daos;
 
-import javax.transaction.Transactional;
 
+import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.MVCStart.Models.User;
@@ -15,8 +16,11 @@ import com.MVCStart.Models.User;
 @Transactional
 public class UserDaoImpl implements UserDao {
 
-	@Qualifier("sessionFactory")
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
+	@Qualifier("sessionFactory")
 	@Autowired
 	SessionFactory sessionFactory;
 	
@@ -25,10 +29,10 @@ public class UserDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		try {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tr = session.beginTransaction();
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
 		session.save(user);
-		tr.commit();
-		session.close();
+		
 		return true;
 		}catch(Exception e){
 			e.printStackTrace();

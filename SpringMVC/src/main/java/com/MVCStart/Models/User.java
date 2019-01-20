@@ -5,21 +5,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.MVCStart.CustomByAnnotation.PasswordValidation;
 
 @Entity
 @Table(name="User")
 public class User {
 
 	@Id  
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@NotNull
+	@Email
+	@NotEmpty
 	private String email;
-	private String fName;
-	private String lName;
 	
+	@NotEmpty
+	private String fName;
+	
+	@NotEmpty
+	private String lName;
+	 
+	@NotEmpty
+	//@PasswordValidation()
 	private String password;
+	
+	@NotEmpty
+	@Transient
+	//@PasswordValidation(value="DUV", message="Not match!!")
 	private String confirmPassword;
+	
+	@NotEmpty
 	private String phone;
 	
 	public String getEmail() {
