@@ -1,12 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextRoot" value = "${pageContext.request.contextPath}" scope="session"/>
 
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color: mediumspringgreen;">
-  <ul class="nav navbar-nav">
+  <ul class="nav navbar-nav">  
       <li class=""><a href="${contextRoot}/HomePage">Home</a></li>
       
-      <li><a href="#">Contact Us</a></li>
-      <li class="dropdown">
+      <li><a href="#">Contact Us</a></li>   
+      <li class="dropdown">   
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Supplier
         </a>
         <ul class="dropdown-menu">  
@@ -32,8 +34,21 @@
         </ul>
       </li>
     </ul>
+    
+    
     <ul class="nav navbar-nav navbar-right">
+     
+     <sec:authorize access="isAnonymous()">
       <li><a href="${contextRoot}/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="${contextRoot}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </sec:authorize>
+      
+      <sec:authorize access="isAuthenticated()">
+      <li>Welcome : ${sessionScope.userEmail}</li>
+      <li><a href="${contextRoot}/logout">Logout</a></li>
+      </sec:authorize>
+      
     </ul>
+    
+    
 </nav>

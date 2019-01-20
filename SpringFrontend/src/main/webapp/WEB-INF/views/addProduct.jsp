@@ -14,11 +14,22 @@
 <f:form class="form-horizontal" action="${contextRoot}/submitProduct" method="post" modelAttribute="productObj"  enctype="multipart/form-data">
     <fieldset>
         <!-- Form Name -->
-        <legend>Add Product</legend>
+        <legend>${title}</legend>
         <!-- Text input-->
         ${msg}
+        
+        <c:if test="${not empty op}">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="productId">Id</label>
+					<div class="col-md-5">
+						<f:input id="name" path="productId" name="productId" type="text"
+							class="form-control input-md" readonly="true" />
+					</div>
+				</div>
+			</c:if>
+			
            <div class="form-group">
-        	<label class="col-md-4 control-label" for="category">Category :</label>
+        	<label 	class="col-md-4 control-label" for="category">Category :</label>
         	<div class="col-md-5">  
         		<f:select class="form-control" path="categoryId">
         			<f:option  value="0">----Select Category------</f:option>
@@ -26,6 +37,7 @@
         				<f:option value="${cat.catId}">${cat.catName}</f:option>
         			</c:forEach>
         		</f:select>
+        		<f:errors style="color: red;" path="categoryId"/>
         	</div>
         </div>
         
@@ -38,15 +50,23 @@
         				<f:option value="${sup.supplierId}">${sup.supplierName}</f:option>
         			</c:forEach>
         		</f:select>
+        		<f:errors style="color: red;" path="supplierId"/>
+        
         	</div>
         </div>
       	<!--  Add File -->
 			<div class="form-group">
 				<label for="pimage2" class="col-md-4 control-label" > Upload
-					Image : </label>
+					Image :
+				<c:if test="${not empty op}">
+					<img
+						src="${images}/${productObj.imgname1}" />
+				</c:if> 
+			</label>
 				<div class="col-md-5">
 					<f:input type="file" class="form-control" id="pimage1"
 						placeholder="Choose Image" path="pimage1" multiple="multiple" />
+						<f:errors path="pimage1" style="color:red"/>
 				</div>
 			</div>
         <div class="form-group">
@@ -83,7 +103,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="saveBtn"></label>
             <div class="col-md-8">
-                <input type="submit" id="saveBtn" name="saveBtn" class="btn btn-success" value="Save"/>
+                <input type="submit" id=${saveBtn} value=${saveBtn}  name="saveBtn" class="btn btn-success" value=${saveBtn} />
                 <input type="reset" id="cancelBtn" name="cancelBtn" class="btn btn-inverse" value="Cancel"/>
             </div>
         </div>

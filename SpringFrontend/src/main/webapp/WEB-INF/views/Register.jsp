@@ -33,20 +33,22 @@
 								<div class="form-group">
 									<f:input type="text" path="fName" class="form-control"
 										placeholder="First Name *" value="" />
+										<f:errors style="color: red;" path="fName" />
 								</div>
 								<div class="form-group">
 									<f:input type="text" path="lName" class="form-control"
 										placeholder="Last Name *" value="" />
+										<f:errors style="color: red;"  path="lName"/>
 								</div>
 								<div class="form-group">
 									<f:input type="password" path="password" class="form-control"
 										placeholder="Password *" value="" />
-										<f:errors path="password"/>
+										<f:errors style="color: red;" path="password"/>
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control"
+									<f:input type="password" class="form-control"
 										path="confirmPassword" placeholder="Confirm Password *" value="" />
-							            <f:errors path = "confirmPassword"/>
+							            <f:errors  style="color: red;" path = "confirmPassword"/>
 								</div>
 
 							</div>
@@ -54,12 +56,12 @@
 								<div class="form-group">
 									<f:input type="email" path="email" class="form-control"
 										placeholder="Your Email *" value="" />
-										<f:errors path="email"/>
+										<f:errors style="color: red;" path="email"/>
 								</div>
 								<div class="form-group">
 									<f:input type="text" name="txtEmpPhone" path="phone"
 										class="form-control" placeholder="Your Phone *" value="" />
-									<f:errors path="phone"/>
+									<f:errors  style="color: red;" path="phone"/>
 								</div>
 
 								<input type="submit" class="btnRegister" value="Register" />

@@ -5,7 +5,7 @@
 	<groupId>com.springMVC</groupId>  
 	<artifactId>SpringFrontend</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>  
 	<name>SpringFrontend Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
@@ -13,7 +13,7 @@
 			<groupId>com.MVCStart</groupId>
 			<artifactId>SpringMVC</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>   
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -22,25 +22,7 @@
 
 		</dependency>
 		
-		<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-config</artifactId>
-    <version>4.2.4.RELEASE</version>
-</dependency>
-
-
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-web</artifactId>
-    <version>4.2.4.RELEASE</version>
-</dependency>
-
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-taglibs</artifactId>
-     <version>4.2.4.RELEASE</version>
-</dependency>
-		<dependency>
+				<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>5.0.1.RELEASE</version>

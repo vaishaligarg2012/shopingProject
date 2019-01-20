@@ -20,8 +20,7 @@ public class SupplierController {
 
 	@Autowired
 	SupplierDao supplierDao;
-
-	@RequestMapping(value="addSupplier", method=RequestMethod.GET)
+    @RequestMapping(value="addSupplier", method=RequestMethod.GET)
 	public ModelAndView showSupplierPage() {
 		Supplier supplier=new Supplier();
 		Address address = new Address();
@@ -31,13 +30,11 @@ public class SupplierController {
 		mv.addObject("btnLabel","Add");
 		mv.addObject("formLabel","Add Supplier");
 		mv.addObject("submitUpdateOrAdd","submitSupplier");
-
-		return mv; 
+    	return mv; 
 	}
 
 	@RequestMapping(value="submitSupplier", method=RequestMethod.POST)
 	public ModelAndView addSupplier(@Valid @ModelAttribute("key123") Supplier sp, BindingResult result) {
-		
 		if(result.hasErrors()) {
 			ModelAndView mv = new ModelAndView("addSupplier");
 			mv.addObject("btnLabel","Add");
@@ -60,9 +57,7 @@ public class SupplierController {
 		mv.addObject("allSupplier", supplierDao.viewAllSupplier());
 		return mv;
 	}
-
-
-	@RequestMapping(value="deleteSupplier/{supplierId}", method=RequestMethod.GET)
+    @RequestMapping(value="deleteSupplier/{supplierId}", method=RequestMethod.GET)
 	public ModelAndView deleteSupplier(@PathVariable("supplierId") int id) {
 		Supplier supplier = supplierDao.viewAllSupplierById(id);
 		supplierDao.deleteSupplier(supplier); 
@@ -89,8 +84,7 @@ public class SupplierController {
 		ModelAndView mv = new ModelAndView("viewAllSuppliers");
 		mv.addObject("allSupplier",supplierDao.viewAllSupplier());
 		mv.addObject("msg","Supplier Details Updated!!");
-
-		return mv;
+    	return mv;
 
 	}
 
