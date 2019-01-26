@@ -59,7 +59,7 @@
 				<label for="pimage2" class="col-md-4 control-label" > Upload
 					Image :
 				<c:if test="${not empty op}">
-					<img
+					<img style="margin-left: 462px;margin-top: 10px;width:97%"
 						src="${images}/${productObj.imgname1}" />
 				</c:if> 
 			</label>

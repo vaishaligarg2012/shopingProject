@@ -38,7 +38,7 @@
 		<c:forEach items="${listOfProduct}" var="productObj">
 			<div class="item  col-xs-4 col-lg-4">
 				<div class="thumbnail">
-					<img class="group list-group-image"
+					<img class="group list-group-image" style="width: 397px;"
 						src="${images}/${productObj.imgname1}" alt="" />
 					<div class="caption">
 						<h4 class="group inner list-group-item-heading">

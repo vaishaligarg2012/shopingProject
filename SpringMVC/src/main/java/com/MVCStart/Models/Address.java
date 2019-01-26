@@ -18,7 +18,7 @@ public class Address {
 	    private String city;
 	    private String state;
 	    
-	    @Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits")
+	   // @Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits")
 		private Integer pincode;
 		
 	

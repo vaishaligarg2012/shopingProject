@@ -1,6 +1,4 @@
 package com.frontend.controller;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -25,7 +23,6 @@ public class UserController {
    
 	     @Autowired
 	     UserDao userDao;
-	     
 	     @Autowired
 	     PhoneValidation phonevalidation;
 	     

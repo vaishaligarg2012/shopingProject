@@ -9,6 +9,9 @@
 <!------ Include the above in your HEAD tag ---------->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link href="css/viewAllCategory.css" rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 <%@ include file = "AdminHeader.jsp" %>
 
@@ -47,8 +50,9 @@
                             <td>${objs.catName }</td>
                             <td>${objs.catDescription}</td>
                             <td align="center">
-                              <a class="btn btn-default"  href="${contextRoot}/updateCategory/${objs.catId}" ><em style="font-size: xx-large;" class="fa fa-pencil"></em></a>
-                              <a class="btn btn-danger" href="${contextRoot}/deleteCategory/${objs.catId}"><em style="font-size: xx-large;" class="fa fa-trash"></em></a>
+                              <a  href="${contextRoot}/updateCategory/${objs.catId}" ><i class="material-icons">create</i></a>
+                              <a  href="${contextRoot}/deleteCategory/${objs.catId}"><i class='fas fa-trash'></i>
+</a>
                             </td>
                         
                           </tr>

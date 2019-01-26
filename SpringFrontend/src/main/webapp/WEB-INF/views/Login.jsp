@@ -25,7 +25,6 @@ function signOut() {
 </script>
  <%@include file="AdminHeader.jsp" %>    
 	
-	
 <div class="container">
 
 <div class="omb_login"> 

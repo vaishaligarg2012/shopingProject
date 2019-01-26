@@ -8,19 +8,16 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
-
-
-	<http pattern="/resources/**" security="none"/>
-	  
-	<http>
+	<http pattern="/resources/**" security="none"/> 
+	              
+	<http>   
     	<intercept-url pattern="/addToCart/**"
      access="hasAuthority('User')"/>
-     <form-login/>
-     	<access-denied-handler error-page="/access-denied"/>
+           <form-login/> 
+
+      	<access-denied-handler error-page="/access-denied"/>
      
   	</http>
-  		
- 
  	<authentication-manager>
   	 <authentication-provider>
   	   <password-encoder ref="passwordEncoder"/> 
@@ -29,7 +26,5 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 			authorities-by-username-query="select email,role from user where email=?"/> 
     </authentication-provider>
   </authentication-manager>
-  
-  
   
 </beans:beans>
