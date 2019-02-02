@@ -62,4 +62,17 @@ public class UserDaoImpl implements UserDao {
  		return false;
 	}
 
+	@Override
+	public User getUserById(String email) {
+		try {
+		Session session=sessionFactory.getCurrentSession();
+		User obj=session.get(User.class,email);
+		return obj;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

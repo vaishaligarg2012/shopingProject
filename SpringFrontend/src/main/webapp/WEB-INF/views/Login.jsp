@@ -1,4 +1,5 @@
 <%@taglib prefix='f' uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="504163670361-prsa2jkhfsj131se147vtlgc8e41cfuk.apps.googleusercontent.com">
 <!-- Latest compiled and minified CSS -->
@@ -49,23 +50,21 @@ function signOut() {
 		<div class="row omb_row-sm-offset-3">
 			<div class="col-xs-12 col-sm-6">	
 			<span class="help-block">	</span> 
-			    <f:form class="omb_loginForm"  action="submitLogin" method="POST" modelAttribute="userInfo">
-					<div class="input-group" >
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-					 	<f:input type="text" path="email" class="form-control" name="email" id="email" placeholder="email"/>
-					    <f:errors path="email"/>
-					</div>
-					<span class="help-block"></span>
-										
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<f:input  type="password" path="password" class="form-control" name="pass" id="pass" placeholder="Password"/>
-					    <f:errors path="password"/>
-					</div>
-                     					<span class="help-block"></span>
-                     
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-				</f:form>
+		
+		 		<form name='f' action='${contextRoot}/perform-login' method='POST'>
+<table>
+	<tr><td>User:</td><td><input type='text' name='username' value=''></td></tr>
+	<tr><td>Password:</td><td><input type='password' name='password'/></td></tr>
+	<tr><td colspan='2'><input name="submit" type="submit" value="Login"/></td></tr>
+
+</table>
+</form> 
+				
+				
+				
+				
+				
+				
 			</div>
     	</div>
 		<div class="row omb_row-sm-offset-3">

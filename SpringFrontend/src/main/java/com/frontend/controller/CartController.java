@@ -12,7 +12,8 @@ public class CartController {
 	
 	@RequestMapping(value="addToCart/{productId}", method=RequestMethod.GET)
 	public String addToCart() {
+		
 		System.out.println("I m Add to Cart");
-		return "AddToCart"; 
+		return "redirect:/"; 
 	}
 }

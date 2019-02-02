@@ -1,6 +1,7 @@
 package com.frontend.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MVCStart.Daos.CategoryDao;
+import com.MVCStart.Daos.ProductDao;
 import com.MVCStart.Daos.UserDao;
 import com.MVCStart.Models.Category;
+import com.MVCStart.Models.Product;
 import com.MVCStart.Models.User;
 
 @Controller
@@ -35,21 +38,32 @@ public class CategoryController {
 	@Autowired
 	HttpSession session;
 	
+	
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String showPage() {
+	public ModelAndView showPage() {
 		
+		List<Category> categories=categoryDao.viewAllCategory();
+		ModelAndView mv=new ModelAndView("HomePage");
+		mv.addObject("categoryList",categories);
+		
+			
 		Principal p=request.getUserPrincipal();
 		if(p==null) {
 			System.out.println("PRincipal is null");
 		}
 		else {
 			System.out.println("principal is not null");
+			
 			String email=p.getName();
 			
-			session.setAttribute("userEmail",email);
+			User userObj=userDao.getUserById(email);
+			
+			session.setAttribute("user",userObj);
+			
 			
 		}
-		return "HomePage"; 
+		return mv; 
 	}
 
 	@RequestMapping(value="AddCategory", method=RequestMethod.GET)
@@ -123,6 +137,20 @@ public class CategoryController {
 
 		return mv;
 
+	}
+	
+	@Autowired
+	ProductDao productDao;
+	
+	@RequestMapping(value="viewProductsById/{cId}", method=RequestMethod.GET)
+	public ModelAndView viewAllProductsById(@PathVariable("cId")int categoryId) {
+		
+		
+		ModelAndView mv = new ModelAndView("ViewAllProducts");
+		List<Product> list=productDao.viewAllProductByCategoryId(categoryId);
+		mv.addObject("listOfProduct", list);
+		System.out.println(list);
+		return mv;
 	}
 
 }

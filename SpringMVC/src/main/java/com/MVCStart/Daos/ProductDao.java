@@ -11,4 +11,7 @@ public interface ProductDao {
     public Product viewProductById(int id);
     public boolean deleteProduct(Product product);
     public boolean updateProduct(Product product);
+    public List<Product> viewAllProductByCategoryId(int categoryId);
+    
+    
 }

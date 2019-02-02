@@ -7,7 +7,24 @@
   <ul class="nav navbar-nav">  
       <li class=""><a href="${contextRoot}/HomePage">Home</a></li>
       
+      
+      <li class="dropdown">   
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop By Category
+        </a>
+        <ul class="dropdown-menu">  
+          
+          <c:forEach items="${categoryList}" var="cObj">
+          	<li><a href="${contextRoot}/viewProductsById/${cObj.catId}">${cObj.catName}</a></li>
+          </c:forEach> 
+          
+          
+        </ul>
+      </li>
+      
       <li><a href="#">Contact Us</a></li>   
+      
+      
+      <sec:authorize access="hasAuthority('Admin')">
       <li class="dropdown">   
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Supplier
         </a>
@@ -33,6 +50,10 @@
           <li><a href="${contextRoot}/viewAllCategory">View All Categories</a></li>
         </ul>
       </li>
+      </sec:authorize>
+      
+      
+      
     </ul>
     
     
@@ -44,8 +65,16 @@
       </sec:authorize>
       
       <sec:authorize access="isAuthenticated()">
-      <li>Welcome : ${sessionScope.userEmail}</li>
+      
+      <sec:authorize access="hasAuthority('User')">
+      <li>
+      	<a href="${contextRoot}/viewCart">View Cart</a>
+      </li>	
+      </sec:authorize>
+      <li>Welcome : ${sessionScope.user.fName} ${sessionScope.user.lName}</li>
       <li><a href="${contextRoot}/logout">Logout</a></li>
+      
+      
       </sec:authorize>
       
     </ul>

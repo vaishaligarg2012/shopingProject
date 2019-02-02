@@ -81,4 +81,21 @@ public class ProductDaoImpl implements ProductDao{
 		return false;
 	}
 
+
+@Override
+public List<Product> viewAllProductByCategoryId(int categoryId) {
+	try {
+	    Session session = sessionFactory.getCurrentSession();
+	    Query q = session.createQuery("from Product where categoryId=:x");
+	    q.setParameter("x",categoryId);
+	    List<Product> list =q.getResultList();
+			return list;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	
+
+}
+
 }

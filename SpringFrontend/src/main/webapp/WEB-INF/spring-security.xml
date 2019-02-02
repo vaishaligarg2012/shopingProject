@@ -13,10 +13,19 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<http>   
     	<intercept-url pattern="/addToCart/**"
      access="hasAuthority('User')"/>
-<form-login login-page="/login" default-target-url="/" />  
-    	<access-denied-handler error-page="/access-denied"/>
+    	 
+    	 <!-- <form-login login-page="/login"
+    	 login-processing-url="/perform-login"  
+    	 default-target-url="/"  authentication-failure-url="/login?error=true"
+    	 always-use-default-target="true"/>  
+    	  -->
+    	  
+    	   <form-login/>     	 
+    	 <access-denied-handler error-page="/access-denied"/>
     
   	</http> 
+  	
+  	
  	<authentication-manager>
   	 <authentication-provider>
   	   <password-encoder ref="passwordEncoder"/> 
