@@ -1,6 +1,9 @@
 package com.MVCStart.Daos;
 
 
+import java.util.List;
+
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,7 +33,6 @@ public class UserDaoImpl implements UserDao {
 		try {
 		Session session = sessionFactory.getCurrentSession();
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
 		session.save(user);
 		
 		return true;
@@ -41,9 +43,23 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User validateUser(String email, String pass) {
+	public boolean validateUser(String email, String pass) {
 		// TODO Auto-generated method stub
-		return null;
+         	try {
+         		Session session = sessionFactory.getCurrentSession();
+         		Query query = session.createQuery("from User");
+         		List<User> list = query.getResultList();
+         		for(User u: list) {
+         			if(u.getEmail().equals(email) && u.getPassword().equals(pass)) {
+         				return true;
+         			}else {
+         				return false;
+         			}
+         		}
+         	}catch(Exception e) {
+         		e.printStackTrace();
+         	}
+ 		return false;
 	}
 
 }

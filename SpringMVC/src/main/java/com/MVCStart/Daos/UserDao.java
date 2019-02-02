@@ -4,6 +4,6 @@ import com.MVCStart.Models.User;
 
 public interface UserDao {
 	  public boolean addUsers(User user);
-      public User validateUser(String email,String pass);
+      public boolean validateUser(String email,String pass);
 
 }
