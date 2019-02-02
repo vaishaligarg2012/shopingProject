@@ -7,20 +7,15 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+	integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+	crossorigin='anonymous'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
-	rel='stylesheet' type='text/css'>
 <%@ include file="AdminHeader.jsp"%>
 
 <div class="container">
@@ -49,12 +44,17 @@
 							<div class="col-xs-12 col-md-6">
 								<p class="lead">$${productObj.price}</p>
 							</div>
-							<div class="col-xs-12 col-md-6" >
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+							<div class="col-xs-12 col-md-6">
 								<a class="btn btn-success"
-									href="${contextRoot}/addToCart/${productObj.productId}"><i class="fas fa-shopping-cart"></i></a> <a class="btn btn-success"
-									href="${contextRoot}/updateProduct/${productObj.productId}"><i class="material-icons">edit</i></a>
-								<a class="btn btn-success"
-									href="${contextRoot}/deleteProduct/${productObj.productId}"><span class="glyphicon glyphicon-trash"></span></a>
+									href="${contextRoot}/addToCart/${productObj.productId}"><i
+									class="fas fa-shopping-cart"></i></a> <a class="btn btn-success"
+									href="${contextRoot}/updateProduct/${productObj.productId}"><i
+									class="material-icons">edit</i></a> <a class="btn btn-success"
+									href="${contextRoot}/deleteProduct/${productObj.productId}"><span
+									class="glyphicon glyphicon-trash"></span></a>
 
 							</div>
 						</div>
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 		</c:forEach>
-</div>
+	</div>
 </div>
 <style>
 .glyphicon {
@@ -80,7 +80,7 @@
 .item.list-group-item {
 	float: none;
 	width: 100%;
-	hight:50%;
+	hight: 50%;
 	background-color: #fff;
 	margin-bottom: 10px;
 }
@@ -124,8 +124,15 @@
 }
 </style>
 <script>
-$(document).ready(function() {
-    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-});
+	$(document).ready(function() {
+		$('#list').click(function(event) {
+			event.preventDefault();
+			$('#products .item').addClass('list-group-item');
+		});
+		$('#grid').click(function(event) {
+			event.preventDefault();
+			$('#products .item').removeClass('list-group-item');
+			$('#products .item').addClass('grid-group-item');
+		});
+	});
 </script>

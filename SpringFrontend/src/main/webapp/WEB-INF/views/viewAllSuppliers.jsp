@@ -6,6 +6,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>AllSuppliers</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
+
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -72,12 +77,9 @@
 					<td>${obj1.supplierEmail}</td>
 					<td>${obj1.supplierMobile }</td>
 					<td>${obj1.address.addressLine}</td>
-					<td align="center"><a class="btn btn-default"
-						href="${contextRoot}/updateSupplierDetails/${obj1.supplierId}"><em
-							style="font-size: xx-large;" class="fa fa-pencil"></em></a> <a
-						class="btn btn-danger"
-						href="${contextRoot}/deleteSupplier/${obj1.supplierId}"><em
-							style="font-size: xx-large;" class="fa fa-trash"></em></a></td>
+					<td align="center"><a 
+						href="${contextRoot}/updateSupplierDetails/${obj1.supplierId}"><i class="material-icons">create</i></a> 
+						<a href="${contextRoot}/deleteSupplier/${obj1.supplierId}"><i class='fas fa-trash'></i></a></td>
 
 				</tr>
 			</c:forEach>

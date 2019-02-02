@@ -28,11 +28,11 @@ public class UserController {
 	     
 	     @Autowired
 	     PasswordValidation passwordValidation;
-	     @RequestMapping(value="login",method=RequestMethod.GET)
+	     @RequestMapping(value="/login",method=RequestMethod.GET)
          public ModelAndView loginUser() {
 	    	 User user = new User();
 	    	 ModelAndView mv = new ModelAndView("Login");
-	    	 mv.addObject("userKey",user );
+	    	 mv.addObject("userInfo",user );
 	 		 return mv;
 	     }
 	     
@@ -61,7 +61,7 @@ public class UserController {
 	    	 return "redirect:/login?logout";
 	    } 
 	     
-	     @RequestMapping(value="submitRegister", method = RequestMethod.POST)
+	     @RequestMapping(value="submitRegister", method = RequestMethod.GET)
 	     public ModelAndView saveRegister(@Valid @ModelAttribute("userKey") User user ,BindingResult result) {
 	    	//Custom Validation by using bean method
 	    	phonevalidation.validate(user,result);
@@ -76,5 +76,25 @@ public class UserController {
 	    	 return mv;
 	    	 }
 	     }
-	     
+	     @RequestMapping(value="submitLogin", method=RequestMethod.GET)
+	     public ModelAndView checkLoginDetails(@Valid @ModelAttribute("userInfo") User user, BindingResult result) {
+	    	 
+	    	 if(result.hasErrors()) {
+	    		 ModelAndView mv = new ModelAndView("login");
+	    		 return mv;
+	    	 }else {
+	    		 boolean b = userDao.validateUser(user.getEmail(), user.getPassword());
+	    		 System.out.println("exists or not "+b);
+	    		 ModelAndView mv = new ModelAndView("HomePage");
+	             	
+//	    		 if(b) {
+//	    			 
+//	            	return mv;	 	    	 
+//	             }else {
+//	            	 
+//	             }
+	          	 return mv;  		  
+	    	 }
+	  
+	     }
 }

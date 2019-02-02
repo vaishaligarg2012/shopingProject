@@ -1,3 +1,4 @@
+<%@taglib prefix='f' uri="http://www.springframework.org/tags/form" %>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="504163670361-prsa2jkhfsj131se147vtlgc8e41cfuk.apps.googleusercontent.com">
 <!-- Latest compiled and minified CSS -->
@@ -27,7 +28,7 @@ function signOut() {
 	
 <div class="container">
 
-<div class="omb_login"> 
+'<div class="omb_login"> 
     	<h3 class="omb_authTitle">Login as <a href="register">Sign up</a></h3>
 		<div class="row omb_row-sm-offset-3 omb_socialButtons">
     	    <div class="col-xs-4 col-sm-2">
@@ -47,35 +48,32 @@ function signOut() {
 
 		<div class="row omb_row-sm-offset-3">
 			<div class="col-xs-12 col-sm-6">	
-			<span class="help-block">	</span>
-			    <form class="omb_loginForm" action="" method="POST" autocomplete="off" >
-					<div class="input-group">
+			<span class="help-block">	</span> 
+			    <f:form class="omb_loginForm"  action="submitLogin" method="POST" modelAttribute="userInfo">
+					<div class="input-group" >
 						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input type="text" class="form-control" name="email" id="email" placeholder="email">
+					 	<f:input type="text" path="email" class="form-control" name="email" id="email" placeholder="email"/>
+					    <f:errors path="email"/>
 					</div>
 					<span class="help-block"></span>
 										
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input  type="password" class="form-control" name="pass" id="pass" placeholder="Password">
+						<f:input  type="password" path="password" class="form-control" name="pass" id="pass" placeholder="Password"/>
+					    <f:errors path="password"/>
 					</div>
                      					<span class="help-block"></span>
                      
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-				</form>
+				</f:form>
 			</div>
     	</div>
 		<div class="row omb_row-sm-offset-3">
-			
 		</div>	    	
 	</div>
-
-
-
-        </div>
+</div>
   <style>
   @charset "ISO-8859-1";
-
 
 /*
     Note: It is best to use a less version of this file ( see http://css2less.cc
