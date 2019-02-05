@@ -86,10 +86,9 @@
 	<div class="container">
 	  <div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-3 footer-one">
-		    <img src="http://velikorodnov.com/html/autotrader/images/logo.png" alt="Logo" style="width:120px;">
+		    <img src="https://ya-webdesign.com/images/shopping-transparent-logo-png.png" alt="Logo" style="width:120px;">
 			
-		    <p class="pt-4">Cras sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-		    	<div class="social-icons"> 
+		   	<div class="social-icons"> 
                <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
                <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
 	            <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>

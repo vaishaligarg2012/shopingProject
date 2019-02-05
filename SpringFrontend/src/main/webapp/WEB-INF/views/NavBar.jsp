@@ -10,7 +10,7 @@
 		<!-- Brand -->
 		<a class="navbar-brand" href="${contextRoot}/HomePage"
 			> <img
-			src="http://velikorodnov.com/html/autotrader/images/logo.png"
+			src="https://ya-webdesign.com/images/shopping-transparent-logo-png.png"
 			alt="Logo" style="width: 120px;">
 		</a>
 
