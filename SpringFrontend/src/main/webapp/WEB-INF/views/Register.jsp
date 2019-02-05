@@ -9,6 +9,7 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 <%@include file="AdminHeader.jsp"%>
 
 <div class="container register">

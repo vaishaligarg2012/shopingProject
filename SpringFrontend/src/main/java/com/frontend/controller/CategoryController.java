@@ -30,6 +30,9 @@ public class CategoryController {
 	CategoryDao categoryDao;
 
 	@Autowired
+	ProductDao productDao;
+	
+	@Autowired
 	HttpServletRequest request;
 	
 	@Autowired
@@ -40,12 +43,14 @@ public class CategoryController {
 	
 	
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value= {"/","HomePage"}, method=RequestMethod.GET)
 	public ModelAndView showPage() {
 		
 		List<Category> categories=categoryDao.viewAllCategory();
+		List<Product> product = productDao.viewAllProduct();
 		ModelAndView mv=new ModelAndView("HomePage");
 		mv.addObject("categoryList",categories);
+		mv.addObject("productList",product);
 		
 			
 		Principal p=request.getUserPrincipal();
@@ -139,8 +144,6 @@ public class CategoryController {
 
 	}
 	
-	@Autowired
-	ProductDao productDao;
 	
 	@RequestMapping(value="viewProductsById/{cId}", method=RequestMethod.GET)
 	public ModelAndView viewAllProductsById(@PathVariable("cId")int categoryId) {

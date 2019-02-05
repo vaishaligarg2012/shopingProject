@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Product Added</title>
 </head>
+
 <body>
 		<h1>I m Add to Cart</h1>
 </body>

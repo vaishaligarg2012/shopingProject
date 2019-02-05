@@ -9,6 +9,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+
 <%@ include file = "AdminHeader.jsp" %>
 
 <f:form class="form-horizontal" action="${contextRoot}/submitProduct" method="post" modelAttribute="productObj"  enctype="multipart/form-data">

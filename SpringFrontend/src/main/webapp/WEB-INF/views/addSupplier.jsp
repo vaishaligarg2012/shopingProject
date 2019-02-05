@@ -22,6 +22,7 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+
 <%@ include file="AdminHeader.jsp"%>
 </head>
 <body>
