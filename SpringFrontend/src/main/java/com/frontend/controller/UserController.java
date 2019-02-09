@@ -1,4 +1,6 @@
 package com.frontend.controller;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -15,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.MVCStart.CustomValidations.PasswordValidation;
 import com.MVCStart.CustomValidations.PhoneValidation;
+import com.MVCStart.Daos.CategoryDao;
 import com.MVCStart.Daos.UserDao;
+import com.MVCStart.Models.Category;
 import com.MVCStart.Models.User;
 
 @Controller
@@ -25,21 +29,28 @@ public class UserController {
 	     UserDao userDao;
 	     @Autowired
 	     PhoneValidation phonevalidation;
-	     
 	     @Autowired
 	     PasswordValidation passwordValidation;
-	    
-	     /*@RequestMapping(value="/login",method= {RequestMethod.GET,RequestMethod.POST})
-         public ModelAndView loginUser() {
+	     @Autowired
+	     CategoryDao categoryDao;
+
+	     @RequestMapping(value = "/login", method = RequestMethod.GET)
+	     public ModelAndView loginUser() {
 	    	 System.out.println("I m  here");
 	    	 ModelAndView mv = new ModelAndView("Login");
-	    	 return mv;
-	     }*/
+	    	 List<Category> categories=categoryDao.viewAllCategory();
+	 		 mv.addObject("categoryList",categories);
+
+	    	 return mv; 
+	     }
 	     
 	     @RequestMapping(value="register", method=RequestMethod.GET)
 	     public ModelAndView registerUser() {
 	    	 User user = new User();
 	    	 ModelAndView mv = new ModelAndView("Register");
+	    	 List<Category> categories=categoryDao.viewAllCategory();
+	 		 mv.addObject("categoryList",categories);
+
 	    	 mv.addObject("userKey",user);
 	    	 return mv;
 	    }
@@ -76,25 +87,5 @@ public class UserController {
 	    	 return mv;
 	    	 }
 	     }
-	     /*@RequestMapping(value="submitLogin", method=RequestMethod.POST)
-	     public ModelAndView checkLoginDetails(@Valid @ModelAttribute("userInfo") User user, BindingResult result) {
-	    	 
-	    	 if(result.hasErrors()) {
-	    		 ModelAndView mv = new ModelAndView("login");
-	    		 return mv;
-	    	 }else {
-	    		 boolean b = userDao.validateUser(user.getEmail(), user.getPassword());
-	    		 System.out.println("exists or not "+b);
-	    		 ModelAndView mv = new ModelAndView("HomePage");
-	             	
-//	    		 if(b) {
-//	    			 
-//	            	return mv;	 	    	 
-//	             }else {
-//	            	 
-//	             }
-	          	 return mv;  		  
-	    	 }
 	  
-	     }*/
 }

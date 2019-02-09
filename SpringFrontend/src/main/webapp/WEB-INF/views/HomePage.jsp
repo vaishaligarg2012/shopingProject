@@ -1,12 +1,11 @@
 
-<%@include file="HeadScript.jsp" %>
-
-<%@include file="NavBar.jsp"%>
- 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url value="/resources/design" var="design" scope="session" />
-<div class="banner slider">
+<%@include file="HeadScript.jsp" %>
+<%@include file="NavBar.jsp"%>
+ 
+<div class="banner slider">  
     <div id="demo" class="carousel slide" data-ride="carousel"  data-interval="false">
 
   <!-- Indicators -->
@@ -25,11 +24,11 @@
        </div>
     <div class="carousel-item"> 
       <img src="${design}/2.jpg"  style="height: 100%" alt="Chicago">
-      </div>
+      </div> 
     <div class="carousel-item">
       <img src="${design}/3.jpg" style="height: 100%" alt="New York">
     </div>
-  </div>
+  </div>  
 
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">

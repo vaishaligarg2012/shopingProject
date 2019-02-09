@@ -38,9 +38,8 @@ public class CategoryController {
 	@Autowired
 	UserDao userDao;
 	
-	@Autowired
+	@Autowired 
 	HttpSession session;
-	
 	
 	
 	@RequestMapping(value= {"/","HomePage"}, method=RequestMethod.GET)
@@ -145,16 +144,6 @@ public class CategoryController {
 	}
 	
 	
-	@RequestMapping(value="viewProductsById/{cId}", method=RequestMethod.GET)
-	public ModelAndView viewAllProductsById(@PathVariable("cId")int categoryId) {
-		
-		
-		ModelAndView mv = new ModelAndView("ViewAllProducts");
-		List<Product> list=productDao.viewAllProductByCategoryId(categoryId);
-		mv.addObject("listOfProduct", list);
-		System.out.println(list);
-		return mv;
-	}
 
 }
 

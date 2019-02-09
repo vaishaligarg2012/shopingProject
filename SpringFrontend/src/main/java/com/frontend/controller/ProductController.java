@@ -24,6 +24,7 @@ import com.MVCStart.CustomValidations.Products.ProductSuppllierDropDown;
 import com.MVCStart.Daos.CategoryDao;
 import com.MVCStart.Daos.ProductDao;
 import com.MVCStart.Daos.SupplierDao;
+import com.MVCStart.Models.Category;
 import com.MVCStart.Models.Product;
 
 @Controller
@@ -104,6 +105,9 @@ public class ProductController {
 				productDao.addProduct(product);
 				List<Product> list = productDao.viewAllProduct();
 				mv = new ModelAndView("ViewAllProducts");
+				List<Category> categories=categoryDao.viewAllCategory();
+				mv.addObject("categoryList",categories);
+				
 				mv.addObject("title","Update Product");
 				mv.addObject("saveBtn", "Update");
 				mv.addObject("listOfProduct", list);
@@ -124,6 +128,9 @@ public class ProductController {
 				product.setImgname1(img);
 				productDao.updateProduct(product);
 				mv = new ModelAndView("ViewAllProducts");
+				List<Category> categories=categoryDao.viewAllCategory();
+				mv.addObject("categoryList",categories);
+				
 				mv.addObject("title","Update Product");
 				mv.addObject("saveBtn", "Update");
 				List<Product> list = productDao.viewAllProduct();
@@ -170,8 +177,11 @@ public class ProductController {
 
 	@RequestMapping(value="viewProducts", method=RequestMethod.GET)
 	public ModelAndView viewAllProduct() {
+		
 		ModelAndView mv = new ModelAndView("ViewAllProducts");
 		List<Product> list = productDao.viewAllProduct();
+		List<Category> categories=categoryDao.viewAllCategory();
+		mv.addObject("categoryList",categories);
 		mv.addObject("listOfProduct", list);
 		System.out.println(list);
 		return mv;
@@ -185,8 +195,24 @@ public class ProductController {
 		System.out.println("Product Object : "+product);
 		productDao.deleteProduct(product);
 		ModelAndView mv= new ModelAndView("ViewAllProducts");
+		List<Category> categories=categoryDao.viewAllCategory();
+		mv.addObject("categoryList",categories);
 		mv.addObject("listOfProduct", productDao.viewAllProduct());
 		mv.addObject("msg","Product Deleted");
+		return mv;
+	}
+
+	@RequestMapping(value="viewProductsById/{cId}", method=RequestMethod.GET)
+	public ModelAndView viewAllProductsById(@PathVariable("cId")int categoryId) {
+		
+		
+		ModelAndView mv = new ModelAndView("ViewAllProducts");
+		List<Product> list=productDao.viewAllProductByCategoryId(categoryId);
+		List<Category> categories=categoryDao.viewAllCategory();
+		mv.addObject("categoryList",categories);
+		
+		mv.addObject("listOfProduct", list);
+		System.out.println(list);
 		return mv;
 	}
 }
