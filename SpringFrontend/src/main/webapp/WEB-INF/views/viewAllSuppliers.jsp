@@ -50,8 +50,9 @@
     $("#example").dataTable();
   })
   </script>
+<%@include file="HeadScript.jsp"%>
 
-<%@ include file="AdminHeader.jsp"%>
+<%@include file="NavBar.jsp"%>
 <div class="col col-xs-6 text-right" style="width:97%">
                     <a type="button" class="btn btn-sm btn-primary btn-create" href="${contextRoot}/addSupplier">Add New Supplier</a>
                   </div>

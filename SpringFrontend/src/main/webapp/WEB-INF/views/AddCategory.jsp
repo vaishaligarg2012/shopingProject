@@ -13,8 +13,8 @@
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="AdminHeader.jsp"%>
-
+<%@include file="HeadScript.jsp"%>
+<%@include file="NavBar.jsp"%>
 <body>
 	<f:form class="form-horizontal"
 		action="${contextRoot}/${submitUpdateOrAdd}" method="post"

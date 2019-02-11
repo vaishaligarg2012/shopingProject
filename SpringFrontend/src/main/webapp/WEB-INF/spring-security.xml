@@ -16,6 +16,11 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
        <form-login  login-page="/login" username-parameter="ssoId" password-parameter="password" authentication-failure-url="/access-denied" />
         <csrf/>
      <access-denied-handler error-page="/access-denied"/>
+     <!-- enable remember me -->
+    <remember-me 
+        token-validity-seconds="1209600"
+	remember-me-parameter="remember-me" 
+	data-source-ref="dataSource" />
     </http> 
   	
   	
@@ -28,5 +33,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 			authorities-by-username-query="select email,role from user where email=?"/> 
     </authentication-provider> 
   </authentication-manager>
+  
   
 </beans:beans>

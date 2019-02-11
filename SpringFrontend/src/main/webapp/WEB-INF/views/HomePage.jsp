@@ -4,7 +4,7 @@
 <spring:url value="/resources/design" var="design" scope="session" />
 <%@include file="HeadScript.jsp" %>
 <%@include file="NavBar.jsp"%>
- 
+ <%@page session="true"%>
 <div class="banner slider">  
     <div id="demo" class="carousel slide" data-ride="carousel"  data-interval="false">
 

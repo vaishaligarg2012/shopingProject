@@ -22,8 +22,8 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
-
-<%@ include file="AdminHeader.jsp"%>
+<%@include file="HeadScript.jsp"%>
+<%@include file="NavBar.jsp"%>
 </head>
 <body>
 

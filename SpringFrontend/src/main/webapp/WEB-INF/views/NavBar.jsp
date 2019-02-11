@@ -3,7 +3,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"
 	scope="session" />
-
+	<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:url value="/resources/design" var="design" scope="session" />
+ 
 <nav class="navbar navbar-expand-sm  bg-light border "
 	style="margin-bottom: 0px">
 	<div class="container">
@@ -42,16 +44,19 @@
 							<sec:authorize access="isAuthenticated()">
 								<div
 									style="width: 100%; float: right; margin-top: -28px; margin-right: -435px;">
-									<span><a style="font-size: medium;font-style: unset;font-family: cursive;font-weight: bold;"> <span> <img
-												src="${design}/user.png" style="height: 5%; width: 9%;"
-												alt="User"></span>${sessionScope.user.fName}
+									<span><a
+										style="font-size: medium; font-style: unset; font-family: cursive; font-weight: bold;">
+											<span> <img src="${design}/user.png"
+												style="height: 5%; width: 9%;" alt="User"></span>${sessionScope.user.fName}
 											${sessionScope.user.lName}
-									</a></span> <span><a href="${contextRoot}/logout" style="padding: 6px;font-size: medium;font-style: unset;font-family: cursive;color: red;font-weight: bold;"><span
+									</a></span> <span><a href="${contextRoot}/logout"
+										style="padding: 6px; font-size: medium; font-style: unset; font-family: cursive; color: red; font-weight: bold;"><span
 											class="fa fa-sign-out" style="font-size: 19px; color: red"></span>
 											Logout</a></span>
 									<sec:authorize access="hasAuthority('User')">
 										<span><a href="${contextRoot}/viewCart"> <span><i
-													class="fa fa-shopping-cart" style="font-size: 28px;" aria-hidden="true"></i> </span>
+													class="fa fa-shopping-cart" style="font-size: 28px;"
+													aria-hidden="true"></i> </span>
 										</a></span>
 									</sec:authorize>
 
@@ -69,20 +74,20 @@
 				<li class=""><a href="${contextRoot}/HomePage">Home</a></li>
 
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Shop By Category </a>
-					<ul class="dropdown-menu">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Shop By Category </a>
+						<ul class="dropdown-menu">
 
-						<c:forEach items="${categoryList}" var="cObj">
+							<c:forEach items="${categoryList}" var="cObj">
+								<li><a href="${contextRoot}/viewProductsById/${cObj.catId}">${cObj.catName}</a></li>
+							</c:forEach>
+
+
+						</ul></li>
+					<li><c:forEach items="${categoryList}" var="cObj">
 							<li><a href="${contextRoot}/viewProductsById/${cObj.catId}">${cObj.catName}</a></li>
-						</c:forEach>
-
-
-					</ul></li>
-				<li><c:forEach items="${categoryList}" var="cObj">
-						<li><a href="${contextRoot}/viewProductsById/${cObj.catId}">${cObj.catName}</a></li>
-					</c:forEach></li>
-
+						</c:forEach></li>
+			
 
 				<sec:authorize access="hasAuthority('Admin')">
 					<li class="dropdown"><a class="dropdown-toggle"
