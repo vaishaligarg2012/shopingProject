@@ -15,7 +15,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.MVCStart.Models.Address;
+import com.MVCStart.Models.Cart;
 import com.MVCStart.Models.Category;
+import com.MVCStart.Models.Item;
+import com.MVCStart.Models.Order;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.Supplier;
 import com.MVCStart.Models.User;
@@ -40,7 +43,7 @@ public class DBConfig {
 		System.out.println("About to create Sessionfactory");
 		//will hold hibernate configuration
 	
-		Properties p=new Properties();
+		Properties p=new Properties(); 
 		p.setProperty("hibernate.dialect","org.hibernate.dialect.H2Dialect");
 		p.setProperty("hibernate.hbm2ddl.auto", "update");
 		p.setProperty("hibernate.show_sql","true");
@@ -53,6 +56,10 @@ public class DBConfig {
 		sb.addAnnotatedClass(Category.class);
 		sb.addAnnotatedClass(Product.class);
 		sb.addAnnotatedClass(User.class);
+		sb.addAnnotatedClass(Item.class);
+		sb.addAnnotatedClass(Cart.class);
+		sb.addAnnotatedClass(Order.class);
+
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();
 	}

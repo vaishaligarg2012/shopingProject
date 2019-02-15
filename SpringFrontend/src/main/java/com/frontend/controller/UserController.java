@@ -82,8 +82,8 @@ public class UserController {
 		    	 return mv;
 	    	 }else {
 	    	 userDao.addUsers(user);
-	    	 ModelAndView mv = new ModelAndView("Register");
-	    	 mv.addObject("msg","User Added successfully");
+	    	 ModelAndView mv = new ModelAndView("Login");
+	    	 mv.addObject("msg","User Added successfully! Please Login");
 	    	 return mv;
 	    	 }
 	     }

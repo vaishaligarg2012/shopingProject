@@ -3,9 +3,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"
 	scope="session" />
-	<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url value="/resources/design" var="design" scope="session" />
- 
+
 <nav class="navbar navbar-expand-sm  bg-light border "
 	style="margin-bottom: 0px">
 	<div class="container">
@@ -72,8 +72,7 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class=""><a href="${contextRoot}/HomePage">Home</a></li>
-
-
+				<sec:authorize access="hasAuthority('User')">
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Shop By Category </a>
 						<ul class="dropdown-menu">
@@ -84,10 +83,10 @@
 
 
 						</ul></li>
-					<li><c:forEach items="${categoryList}" var="cObj">
-							<li><a href="${contextRoot}/viewProductsById/${cObj.catId}">${cObj.catName}</a></li>
-						</c:forEach></li>
-			
+				</sec:authorize>
+				<li><c:forEach items="${categoryList}" var="cObj">
+						<li><a href="${contextRoot}/viewProductsById/${cObj.catId}">${cObj.catName}</a></li>
+					</c:forEach></li>
 
 				<sec:authorize access="hasAuthority('Admin')">
 					<li class="dropdown"><a class="dropdown-toggle"
