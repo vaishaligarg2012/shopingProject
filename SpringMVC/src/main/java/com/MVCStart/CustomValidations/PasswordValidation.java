@@ -22,8 +22,12 @@ public class PasswordValidation  implements Validator{
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required.password");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "required.passwordConfirm");
-		
+		 
 		User user = (User)target;
+ 
+		if(user.getPassword().length()<=4) {  
+			errors.rejectValue("password","required.passwordLength");
+		}
 		if(!(user.getPassword().equals(user.getConfirmPassword()))) {
 			errors.rejectValue("confirmPassword", "notmatch.password");
 			

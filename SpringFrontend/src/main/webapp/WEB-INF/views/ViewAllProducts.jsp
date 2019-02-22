@@ -19,172 +19,163 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$.ajax({
-    type : "GET", 
-    url : "${pageContext.request.contextPath}/HomePage",
-    success: function(data){
-       console.log(data);  
-    } 
-});
+		type : "GET",
+		url : "${pageContext.request.contextPath}/getJsonProduct",
+		success : function(data) {
+			console.log(data);
+		}
+	});
+</script>
+<script>
+	function myFunction() {
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
 </script>
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
-<div class="container">
-	<div class="row">
-		<div class="col">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="${contextRoot}/HomePage">Home</a></li>
-					<li class="breadcrumb-item"><a
-						href="${contextRoot}/viewAllCategory">Category</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Products</li>
-				</ol>
-			</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="${contextRoot}/HomePage">Home</a></li>
+						<li class="breadcrumb-item"><a
+							href="${contextRoot}/viewAllCategory">Category</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Products</li>
+					</ol>
+				</nav>
+			</div>
 		</div>
 	</div>
-</div>
+
+<sec:authorize access="hasAuthority('Admin')">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<div class="container21">
+
+		<c:if test="${not empty msg}">
+			<div class="alert alert-success">${msg}</div>
+		</c:if>
 
 
-<div class="container">
-	<div class="row">
-		<div class="col-12 col-sm-3">
-			<div class="card bg-light mb-3">
-				<div class="card-header bg-primary text-white text-uppercase">
-					<i class="fa fa-list"></i> Categories
+		<input type="text" id="myInput" onkeyup="myFunction()"
+			placeholder="Search for products" title="Type in a name">
+
+		<table id="myTable">
+			<tr class="header">
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Description</th>
+				<th>Category</th>
+				<th>Supplier</th>
+				<th>Image</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+				<c:forEach items="${listOfProduct}" var="prodObj">
+			<tr>
+			
+					<td>${prodObj.productName}</td>
+					<td>${prodObj.price}</td>
+					<td>${prodObj.quantity}</td>
+					<td>${prodObj.productDescription}</td>
+					<td>${prodObj.categoryId}</td>
+					<td>${prodObj.supplierId}</td>
+					<td><img src="${images}/${prodObj.imgname1}"
+						style="height: 122px;" /></td>
+					<td><a
+						href="${contextRoot}/updateProduct/${prodObj.productId}"> <span
+							class="glyphicon glyphicon-edit"></span>
+					</a></td>
+					<td><a
+						href="${contextRoot}/deleteProduct/${prodObj.productId}"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a></td>
+								</tr>
+					
+				</c:forEach>
+
+		</table>
+	</div>
+</sec:authorize>
+
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-3">
+				<div class="card bg-light mb-3">
+					<div class="card-header bg-primary text-white text-uppercase">
+						<i class="fa fa-list"></i> Categories
+					</div>
+					<ul class="list-group category_block">
+						<c:forEach items="${categoryList}" var="objs">
+							<li class="list-group-item"><a
+								href="${contextRoot}/viewProductsById/${objs.catId}">${objs.catName}</a></li>
+
+						</c:forEach>
+					</ul>
 				</div>
-				<ul class="list-group category_block">
-					<c:forEach items="${categoryList}" var="objs">
-						<li class="list-group-item"><a
-							href="${contextRoot}/viewProductsById/${objs.catId}">${objs.catName}</a></li>
 
-					</c:forEach>
-				</ul>
 			</div>
+			<div class="col">
+				<div class="row">
+					<c:forEach items="${listOfProduct}" var="productObj">
+						<div style="padding-top: 13px; padding-left: 11px;">
+							<div class="card" style="width: 347px;">
+								<img class="card-img-top" style="height: 246px;"
+									src="${images}/${productObj.imgname1}" alt="Card image cap">
+								<div class="card-body" style="height: 215px;">
+									<h4 class="card-title">
+										<a data-toggle="modal" style="cursor: grab;"
+											href="${contextRoot}/productDetail/${productObj.productId}" title="View Product">${productObj.productName}</a>
+									</h4>
 
-		</div>
-		<div class="col">
-			<div class="row">
-				<c:forEach items="${listOfProduct}" var="productObj">
-					<div style="padding-top: 13px; padding-left: 11px;">
-						<div class="card" style="width: 347px;">
-							<img class="card-img-top" style="height: 246px;"
-								src="${images}/${productObj.imgname1}" alt="Card image cap">
-							<div class="card-body" style="height: 215px;">
-								<h4 class="card-title">
-									<a data-toggle="modal" style="cursor: grab;"
-										data-target="#myModal" title="View Product">${productObj.productName}</a>
-								</h4>
-								<!-- The Modal -->
-								<div class="modal" id="myModal">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<a href="#" data-dismiss="modal" class="class pull-right"><span
-													class="glyphicon glyphicon-remove"></span></a>
-												<h3 class="modal-title">${productObj.productName}</h3>
-											</div>
-											<div class="modal-body">
-												<div class="row">
-													<div class="col-md-6 product_img">
-														<img src="${images}/${productObj.imgname1}"
-															class="img-responsive">
-													</div>
-													<div class="col-md-6 product_content">
-														<h4>
-															Product Id: <span>${productObj.productId}</span>
-														</h4>
-														<div class="rating">
-															<span class="glyphicon glyphicon-star"></span> <span
-																class="glyphicon glyphicon-star"></span> <span
-																class="glyphicon glyphicon-star"></span> <span
-																class="glyphicon glyphicon-star"></span> <span
-																class="glyphicon glyphicon-star"></span> (10 reviews)
-														</div>
-														<p>${productObj.productDescription}</p>
-														<h3 class="cost">
-															<span class="glyphicon glyphicon-usd"></span> 75.00 <small
-																class="pre-cost"><span
-																class="glyphicon glyphicon-usd"></span> 60.00</small>
-														</h3>
-														<div class="row">
-															<div class="col-md-4 col-sm-6 col-xs-12">
-																<select class="form-control" name="select">
-																	<option value="" selected="">Color</option>
-																	<option value="black">Black</option>
-																	<option value="white">White</option>
-																	<option value="gold">Gold</option>
-																	<option value="rose gold">Rose Gold</option>
-																</select>
-															</div>
-															<!-- end col -->
-															<div class="col-md-4 col-sm-6 col-xs-12">
-																<select class="form-control" name="select">
-																	<option value="">Capacity</option>
-																	<option value="">16GB</option>
-																	<option value="">32GB</option>
-																	<option value="">64GB</option>
-																	<option value="">128GB</option>
-																</select>
-															</div>
-															<!-- end col -->
-															<div class="col-md-4 col-sm-12">
-																<select class="form-control" name="select">
-																	<option value="" selected="">QTY</option>
-																	<option value="">1</option>
-																	<option value="">2</option>
-																	<option value="">3</option>
-																</select>
-															</div>
-															<!-- end col -->
-														</div>
-														<div class="space-ten"></div>
-
-														<div class="btn-ground">
-															<button type="button" class="btn btn-primary">
-																<span class="glyphicon glyphicon-shopping-cart"></span>
-																Add To Cart
-															</button>
-															<button type="button" class="btn btn-primary">
-																<span class="glyphicon glyphicon-heart"></span> Add To
-																Wishlist
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
+									<p class="card-text">${productObj.productDescription}</p>
+									<div class="row">
+										<div class="col">
+											<p class="btn btn-danger btn-block">$${productObj.price}</p>
 										</div>
-									</div>
-								</div>
+										<div class="col">
 
-								<p class="card-text">${productObj.productDescription}</p>
-								<div class="row">
-									<div class="col">
-										<p class="btn btn-danger btn-block">$${productObj.price}</p>
-									</div>
-									<div class="col">
-							
 											<a class="btn btn-success"
 												href="${contextRoot}/addToCart/${productObj.productId}"><i
 												class="fas fa-shopping-cart">Add to cart</i></a>
-									
-										<sec:authorize access="hasAuthority('Admin')">
-											<a class="btn btn-success"
-												href="${contextRoot}/updateProduct/${productObj.productId}"><i
-												class="fa fa-edit"></i></a>
-											<a class="btn btn-success"
-												href="${contextRoot}/deleteProduct/${productObj.productId}"><span
-												class="glyphicon glyphicon-trash"></span></a>
-										</sec:authorize>
+
+											</div>
 									</div>
 								</div>
-							</div>
+							</div> 
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
 
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 <style>
 .glyphicon {
 	margin-right: 5px;
@@ -241,6 +232,41 @@
 
 .list-group-item-text {
 	margin: 0 0 11px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#myInput {
+	background-image: url('/css/searchicon.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+
+#myTable {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 18px;
+}
+
+#myTable th, #myTable td {
+	text-align: left;
+	padding: 12px;
+}
+
+#myTable tr {
+	border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+	background-color: #f1f1f1;
 }
 </style>
 <script>

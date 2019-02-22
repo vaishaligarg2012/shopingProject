@@ -13,9 +13,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" ></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
-    if(msg){
-    	 toastr.success('message', 'title');
-    }
    </script>
 	
 <%@include file="HeadScript.jsp" %>

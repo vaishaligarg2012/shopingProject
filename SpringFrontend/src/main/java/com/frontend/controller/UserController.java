@@ -38,6 +38,7 @@ public class UserController {
 	     public ModelAndView loginUser() {
 	    	 System.out.println("I m  here");
 	    	 ModelAndView mv = new ModelAndView("Login");
+	    	 
 	    	 List<Category> categories=categoryDao.viewAllCategory();
 	 		 mv.addObject("categoryList",categories);
 
@@ -79,7 +80,7 @@ public class UserController {
 	        passwordValidation.validate(user,result);
 	    	 if(result.hasErrors()) {
 	    		 ModelAndView mv = new ModelAndView("Register");
-		    	 return mv;
+		    	 return mv; 
 	    	 }else {
 	    	 userDao.addUsers(user);
 	    	 ModelAndView mv = new ModelAndView("Login");

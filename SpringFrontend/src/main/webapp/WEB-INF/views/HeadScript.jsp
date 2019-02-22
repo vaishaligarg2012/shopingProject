@@ -57,8 +57,7 @@
 				<ul class="list-inline ">
 					<a href="#"><li class="list-inline-item"><small><i
 								class="fa fa-mobile fa-2x"></i> Download Mobile App</small></li></a>
-					<a href="#"><li class="list-inline-item"><small>
-								Check On Road Price</small></li></a>
+
 					<a href="#"><li class="list-inline-item"><small>
 								Feedback</small></li></a>
 					<a href="#"><li class="list-inline-item"><small>

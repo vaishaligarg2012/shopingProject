@@ -11,6 +11,7 @@
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
+<%@ page errorPage="UserExceptionShowPage.jsp" %>  
 
 <f:form class="form-horizontal" action="${contextRoot}/submitProduct" method="post" modelAttribute="productObj"  enctype="multipart/form-data">
     <fieldset>

@@ -1,6 +1,7 @@
 package com.frontend.controller;
 
 import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MVCStart.Daos.CartDao;
 import com.MVCStart.Daos.CategoryDao;
 import com.MVCStart.Daos.ProductDao;
 import com.MVCStart.Daos.UserDao;
+import com.MVCStart.Models.Cart;
 import com.MVCStart.Models.Category;
+import com.MVCStart.Models.Item;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.User;
 
@@ -41,6 +45,8 @@ public class CategoryController {
 	@Autowired 
 	HttpSession session;
 	
+	@Autowired
+	CartDao cartDao;
 	
 	@RequestMapping(value= {"/","HomePage"}, method=RequestMethod.GET)
 	public ModelAndView showPage() {
@@ -62,6 +68,17 @@ public class CategoryController {
 			String email=p.getName();
 			
 			User userObj=userDao.getUserById(email);
+			int size=0;
+			Cart cartObj=cartDao.getCartByCustomer(email);
+			
+			if(cartObj!=null){
+			Collection<Item> items=cartObj.getItems();
+			for(Item item:items){
+				size=size+item.getQunatity();
+			}
+			}
+			
+			session.setAttribute("items",size);
 			
 			session.setAttribute("user",userObj);
 			

@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ page isErrorPage="true" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Exception</title>
 </head>
 <body>
-
-</body>
-</html>
+<div>
+<a href="${contextRoot}/HomePage">Something went wrong!! Go to home page
+</a>
+</div>
+</html> 

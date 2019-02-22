@@ -26,6 +26,8 @@ public class PhoneValidation  implements Validator{
 		if(user.getPhone().length()>10 ||  user.getPhone().length()<10) {
 			errors.rejectValue("phone", "notvalid.phone");
 		}
-		
+		if(user.getPassword().length()>4) {
+			errors.rejectValue("password", "");
+		}
 		}
 }

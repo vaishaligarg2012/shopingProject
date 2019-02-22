@@ -54,10 +54,11 @@
 											class="fa fa-sign-out" style="font-size: 19px; color: red"></span>
 											Logout</a></span>
 									<sec:authorize access="hasAuthority('User')">
-										<span><a href="${contextRoot}/viewCart"> <span><i
+										<span>
+										<a href="${contextRoot}/addToCart/viewCart"><span><i
 													class="fa fa-shopping-cart" style="font-size: 28px;"
-													aria-hidden="true"></i> </span>
-										</a></span>
+													aria-hidden="true"></i><b>Cart</b> </span>
+										</a></span><div style="margin-top: -44px;margin-left: 234px;" ><b style="color: brown;font-weight: 600;font-size: 21px;">${sessionScope.items}</b></div>
 									</sec:authorize>
 
 								</div>

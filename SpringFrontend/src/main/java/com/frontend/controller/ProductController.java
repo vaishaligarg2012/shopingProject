@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MVCStart.CustomValidations.Products.ProductCategorySelectValidation;
@@ -61,6 +62,11 @@ public class ProductController {
 	public ModelAndView createProduct(@Valid @ModelAttribute("productObj") Product product, BindingResult result) {
 		categoryDropDownProduct.validate(product, result);
 		productSupplier.validate(product, result);
+
+		if(product.getProductId()==0) {
+			productImageValidator.validate(product, result);
+		}
+
 		ModelAndView mv=null;
 		if(result.hasErrors()) {
 			mv=new ModelAndView("addProduct");
@@ -69,97 +75,68 @@ public class ProductController {
 			mv.addObject("categories",categoryDao.viewAllCategory());
 			mv.addObject("supplier",supplierDao.viewAllSupplier());
 			return mv;
-		}else {
-
 		}
-		/*ModelAndView mv = new ModelAndView("ViewAllProducts");
-		mv.addObject("categories",categoryDao.viewAllCategory());
-		mv.addObject("supplier",supplierDao.viewAllSupplier());
-		 */	
-		if(product.getProductId()==0) {
-			productImageValidator.validate(product, result);
-			System.out.println("image size "+product.getPimage1().getSize()+"image type "+product.getPimage1().getContentType());
-				String filePathString = session.getServletContext().getRealPath("/");
-				String fileName= product.getPimage1().getOriginalFilename();
-				System.out.println("image name is done"+fileName);
-				product.setImgname1(fileName);
-				
-				System.out.println(product.getImgname1()+" Hey here is size of file"+product.getPimage1().getContentType()+" "+product.getPimage1().getSize());
-				try{
-					byte[] imageBytes=product.getPimage1().getBytes();
-					String str=filePathString+"resources\\images\\";
-					System.out.println(str);
-					File file=new File(str);
-					if(!file.exists()) {
-						file.mkdirs();
-					}
-					FileOutputStream fos=new FileOutputStream(filePathString+"resources\\images\\"+fileName);
-					BufferedOutputStream bos= new BufferedOutputStream(fos);
-					bos.write(imageBytes);
-					bos.close();
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-				productDao.addProduct(product);
-				List<Product> list = productDao.viewAllProduct();
-				mv = new ModelAndView("ViewAllProducts");
-				List<Category> categories=categoryDao.viewAllCategory();
-				mv.addObject("categoryList",categories);
-				
-				mv.addObject("title","Update Product");
-				mv.addObject("saveBtn", "Update");
-				mv.addObject("listOfProduct", list);
-				for(Product c: list) {
-					System.out.println("We have all image"+c.getImgname1());
-						
-				}
-				mv.addObject("msg","Product Added");
-			
-				return mv;
 
-			
-		}else {
-			
+		mv = new ModelAndView("ViewAllProducts");
+		if(product.getProductId()==0) {
+			System.out.println("image size "+product.getPimage1().getSize()+"image type "+product.getPimage1().getContentType());
+			String filePathString = session.getServletContext().getRealPath("/");
+			String fileName= product.getPimage1().getOriginalFilename();
+			System.out.println("image name is done"+fileName);
+			product.setImgname1(fileName);
+
+			System.out.println(product.getImgname1()+" Hey here is size of file"+product.getPimage1().getContentType()+" "+product.getPimage1().getSize());
+			uploadImage(product,filePathString,fileName);
+			productDao.addProduct(product);
+			mv.addObject("msg","Product Added");
+		}
+		else {
+
+			//System.out.println("I m in else" +product.getPimage1().getSize());
 			if(product.getPimage1().getSize()==0) {
 				Product pro=productDao.viewProductById(product.getProductId());
 				String img=pro.getImgname1();
 				product.setImgname1(img);
 				productDao.updateProduct(product);
-				mv = new ModelAndView("ViewAllProducts");
-				List<Category> categories=categoryDao.viewAllCategory();
-				mv.addObject("categoryList",categories);
-				
-				mv.addObject("title","Update Product");
-				mv.addObject("saveBtn", "Update");
-				List<Product> list = productDao.viewAllProduct();
-				mv.addObject("listOfProduct", list);
+			}
+			else 
+			{
 				String filePathString = session.getServletContext().getRealPath("/");
 				String fileName= product.getPimage1().getOriginalFilename();
 				product.setImgname1(fileName);
+				productDao.updateProduct(product);
 				System.out.println("Hey here is size of file"+product.getPimage1().getContentType()+" "+product.getPimage1().getSize());
-				try{
-					byte[] imageBytes=product.getPimage1().getBytes();
-					String str=filePathString+"resources\\images\\";
-					System.out.println(str);
-					File file=new File(str);
-					if(!file.exists()) {
-						file.mkdirs();
-					}
-					FileOutputStream fos=new FileOutputStream(filePathString+"resources\\images\\"+fileName);
-					BufferedOutputStream bos= new BufferedOutputStream(fos);
-					bos.write(imageBytes);
-					bos.close();
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}
+				uploadImage(product, filePathString,fileName);
 			}
-			}
+		}
+		List<Category> categories=categoryDao.viewAllCategory();
+		mv.addObject("categoryList",categories);
+		mv.addObject("title","Update Product");
+		mv.addObject("saveBtn", "Update");
+		List<Product> list = productDao.viewAllProduct();
+		mv.addObject("listOfProduct", list);
 		return mv;
 
+	}
+
+	public void uploadImage(Product product,String filePathString,String fileName) {
+		try{
+			byte[] imageBytes=product.getPimage1().getBytes();
+			String str=filePathString+"resources\\images\\";
+			System.out.println(str);
+			File file=new File(str);
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+			FileOutputStream fos=new FileOutputStream(filePathString+"resources\\images\\"+fileName);
+			BufferedOutputStream bos= new BufferedOutputStream(fos);
+			bos.write(imageBytes);
+			bos.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@RequestMapping(value="updateProduct/{productId}", method= RequestMethod.GET)
@@ -177,7 +154,7 @@ public class ProductController {
 
 	@RequestMapping(value="viewProducts", method=RequestMethod.GET)
 	public ModelAndView viewAllProduct() {
-		
+
 		ModelAndView mv = new ModelAndView("ViewAllProducts");
 		List<Product> list = productDao.viewAllProduct();
 		List<Category> categories=categoryDao.viewAllCategory();
@@ -186,6 +163,13 @@ public class ProductController {
 		System.out.println(list);
 		return mv;
 	}
+	//	@RequestMapping(value="getJsonProduct", method=RequestMethod.GET, produces = "application/json")
+	//	public @ResponseBody  Product getAllProducts() {
+	//		Product list = (Product) productDao.viewAllProduct();
+	//		System.out.println(list);
+	//		return list;
+	//	}
+
 
 	@RequestMapping(value="deleteProduct/{productId}", method = RequestMethod.GET)
 	public ModelAndView deleteProduct(@PathVariable("productId") int id) {
@@ -204,15 +188,23 @@ public class ProductController {
 
 	@RequestMapping(value="viewProductsById/{cId}", method=RequestMethod.GET)
 	public ModelAndView viewAllProductsById(@PathVariable("cId")int categoryId) {
-		
-		
 		ModelAndView mv = new ModelAndView("ViewAllProducts");
 		List<Product> list=productDao.viewAllProductByCategoryId(categoryId);
 		List<Category> categories=categoryDao.viewAllCategory();
 		mv.addObject("categoryList",categories);
-		
 		mv.addObject("listOfProduct", list);
 		System.out.println(list);
+		return mv;
+	}
+
+	@RequestMapping(value="productDetail/{productId}", method=RequestMethod.GET)
+	public ModelAndView viewProductDetail(@PathVariable("productId")int id) {
+		ModelAndView mv = new ModelAndView("ProductDetails");
+		List<Category> categories=categoryDao.viewAllCategory();
+		mv.addObject("categoryList",categories);
+		Product list=productDao.viewProductById(id);
+		mv.addObject("productDetails", list);
+
 		return mv;
 	}
 }
