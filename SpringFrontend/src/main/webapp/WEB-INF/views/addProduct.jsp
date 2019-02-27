@@ -12,7 +12,7 @@
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
 <%@ page errorPage="UserExceptionShowPage.jsp" %>  
-
+<title>Add Product</title>
 <f:form class="form-horizontal" action="${contextRoot}/submitProduct" method="post" modelAttribute="productObj"  enctype="multipart/form-data">
     <fieldset>
         <!-- Form Name -->

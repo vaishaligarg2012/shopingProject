@@ -88,5 +88,11 @@ public class UserController {
 	    	 return mv;
 	    	 }
 	     }
+	     
+	     @RequestMapping(value="addressPage", method=RequestMethod.GET)
+	     public ModelAndView openAddressPage() {
+	    	 ModelAndView mv = new ModelAndView("Address");
+	    	 return mv;
+	     }
 	  
 }

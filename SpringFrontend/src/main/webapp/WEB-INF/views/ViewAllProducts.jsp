@@ -4,8 +4,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-
 <!-- Latest compiled and minified CSS -->
+<title>AllProducts</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel='stylesheet'
@@ -57,7 +57,7 @@
 						<li class="breadcrumb-item"><a href="${contextRoot}/HomePage">Home</a></li>
 						<li class="breadcrumb-item"><a
 							href="${contextRoot}/viewAllCategory">Category</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Products</li>
+						<li class="breadcrumb-item active" aria-current="page">${nameToDisplay}</li>
 					</ol>
 				</nav>
 			</div>
@@ -121,9 +121,10 @@
 	</div>
 </sec:authorize>
 
+	
 
-
-
+	<sec:authorize access="hasAuthority('User') OR isAnonymous()">
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-sm-3">
@@ -176,6 +177,7 @@
 			</div>
 		</div>
 	</div>
+	</sec:authorize>
 <style>
 .glyphicon {
 	margin-right: 5px;

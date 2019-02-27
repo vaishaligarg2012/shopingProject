@@ -11,7 +11,7 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
-
+<title>Cart</title>
 <div class="container">
 
 	
@@ -68,7 +68,7 @@
 							<td><a href="${contextRoot}/HomePage" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total: <b style="color: darkgoldenrod;"> ${sessionScope.grandTotal}</b></strong></td>
-							<td><a href="" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="${contextRoot}/addressPage" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				

@@ -16,7 +16,7 @@ import com.MVCStart.Models.Cart;
 @Transactional
 @Repository("cartDao")
 public class CartDaoImpl implements CartDao {
-
+ 
 	@Autowired
 	SessionFactory sessionFactory;
 

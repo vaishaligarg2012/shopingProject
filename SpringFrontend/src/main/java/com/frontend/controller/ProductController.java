@@ -189,10 +189,14 @@ public class ProductController {
 	@RequestMapping(value="viewProductsById/{cId}", method=RequestMethod.GET)
 	public ModelAndView viewAllProductsById(@PathVariable("cId")int categoryId) {
 		ModelAndView mv = new ModelAndView("ViewAllProducts");
+		
+		
 		List<Product> list=productDao.viewAllProductByCategoryId(categoryId);
 		List<Category> categories=categoryDao.viewAllCategory();
 		mv.addObject("categoryList",categories);
 		mv.addObject("listOfProduct", list);
+		mv.addObject("nameToDisplay",categoryDao.viewCategoryById(categoryId).getCatName());
+		
 		System.out.println(list);
 		return mv;
 	}

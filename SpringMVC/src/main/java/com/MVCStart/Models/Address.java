@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="SupplierAddress")
@@ -13,7 +12,7 @@ public class Address {
 	    
 	    @Id
 	    @GeneratedValue(strategy=GenerationType.AUTO)
-	    private int addressId;
+	    private String addressId;
 	    private String addressLine;
 	    private String city;
 	    private String state;
@@ -22,11 +21,11 @@ public class Address {
 		private Integer pincode;
 		
 	
-		public int getAddressId() {
+		public String getAddressId() {
 			return addressId;
 		}
 
-		public void setAddressId(int addressId) {
+		public void setAddressId(String addressId) {
 			this.addressId = addressId;
 		}
 

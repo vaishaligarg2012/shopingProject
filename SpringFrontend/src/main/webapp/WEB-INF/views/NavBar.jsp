@@ -5,7 +5,7 @@
 	scope="session" />
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url value="/resources/design" var="design" scope="session" />
-
+ 
 <nav class="navbar navbar-expand-sm  bg-light border "
 	style="margin-bottom: 0px">
 	<div class="container">
@@ -43,7 +43,7 @@
 
 							<sec:authorize access="isAuthenticated()">
 								<div
-									style="width: 100%; float: right; margin-top: -28px; margin-right: -435px;">
+									style="width: 100%; float: right; margin-top: -28px;">
 									<span><a
 										style="font-size: medium; font-style: unset; font-family: cursive; font-weight: bold;">
 											<span> <img src="${design}/user.png"
@@ -57,12 +57,12 @@
 										<span>
 										<a href="${contextRoot}/addToCart/viewCart"><span><i
 													class="fa fa-shopping-cart" style="font-size: 28px;"
-													aria-hidden="true"></i><b>Cart</b> </span>
-										</a></span><div style="margin-top: -44px;margin-left: 234px;" ><b style="color: brown;font-weight: 600;font-size: 21px;">${sessionScope.items}</b></div>
+													aria-hidden="true"></i> </span>
+										</a></span><div style="margin-top: -44px;margin-left: 234px;" ><b style="color: brown;font-weight: 600;font-size: 21px;">${sessionScope.items}</b><b style="padding-left: 6px;">Cart</b></div>
 									</sec:authorize>
 
 								</div>
-
+ 
 
 							</sec:authorize>
 

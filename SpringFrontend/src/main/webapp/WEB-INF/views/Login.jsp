@@ -6,7 +6,7 @@
 	scope="session" />
   
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-
+<title>Login</title>
 <meta name="google-signin-client_id"
 	content="504163670361-prsa2jkhfsj131se147vtlgc8e41cfuk.apps.googleusercontent.com">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">

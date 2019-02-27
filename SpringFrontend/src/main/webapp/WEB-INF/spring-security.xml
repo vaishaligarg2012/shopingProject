@@ -12,9 +12,9 @@
 	<http pattern="/resources/**" security="none" />
 
 
-	<http auto-config="true">
+	<http use-expressions="true" auto-config="true">
 		<intercept-url pattern="/addToCart/**"
-			access="hasAuthority('User')" />
+			access="hasAuthority('User')" />  
 		<form-login login-page="/login" username-parameter="ssoId"
 			password-parameter="password"
 			authentication-failure-url="/access-denied" />

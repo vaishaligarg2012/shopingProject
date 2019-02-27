@@ -22,6 +22,7 @@ import com.MVCStart.Models.Order;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.Supplier;
 import com.MVCStart.Models.User;
+import com.MVCStart.Models.UserAddress;
 
 @Configuration
 @EnableTransactionManagement 
@@ -40,7 +41,7 @@ public class DBConfig {
 
 	@Bean(name="sessionFactory")  
 	public SessionFactory getSessionFactory(){
-		System.out.println("About to create Sessionfactory");
+		System.out.println("About to create  Sessionfactory");
 		//will hold hibernate configuration
 	
 		Properties p=new Properties(); 
@@ -59,10 +60,11 @@ public class DBConfig {
 		sb.addAnnotatedClass(Item.class);
 		sb.addAnnotatedClass(Cart.class);
 		sb.addAnnotatedClass(Order.class);
+		sb.addAnnotatedClass(UserAddress.class);
 
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();
-	}
+	}  
 		 
 	@Bean(name="hibernateTransection")
 	@Autowired
