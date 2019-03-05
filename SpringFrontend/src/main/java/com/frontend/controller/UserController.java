@@ -1,8 +1,10 @@
 package com.frontend.controller;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +23,7 @@ import com.MVCStart.Daos.CategoryDao;
 import com.MVCStart.Daos.UserDao;
 import com.MVCStart.Models.Category;
 import com.MVCStart.Models.User;
+import com.MVCStart.Models.UserAddress;
 
 @Controller
 public class UserController {
@@ -89,10 +92,42 @@ public class UserController {
 	    	 }
 	     }
 	     
-	     @RequestMapping(value="addressPage", method=RequestMethod.GET)
-	     public ModelAndView openAddressPage() {
-	    	 ModelAndView mv = new ModelAndView("Address");
-	    	 return mv;
-	     }
-	  
-}
+	    
+	 	@Autowired
+		HttpSession session;
+		
+		@RequestMapping(value="addressPage", method=RequestMethod.GET)
+		public ModelAndView openAddressPage() {
+			/*UserAddress userAddress= new UserAddress();
+			
+			ModelAndView mv = new ModelAndView("Address");
+			mv.addObject("key1",userAddress);
+
+			UserAddress address = userDao.getAllAddressByUserId("garg@gmail.com");
+			mv.addObject("listofAddres",address);
+			
+			System.out.println("geting"+address.getAddressLine());
+			 */
+
+			
+			User user=(User)session.getAttribute("user");
+				ModelAndView mv=new ModelAndView("Address");
+				mv.addObject("key1",new UserAddress());
+				//mv.addObject("listofAddres", userDao.getAllAddressByUserId(user.getEmail()) );
+				
+				return mv;
+			
+		}
+		@RequestMapping(value="createNewPage", method=RequestMethod.POST)
+		public ModelAndView createNewAddress(@ModelAttribute("key1") UserAddress userAddress,HttpServletRequest request,HttpSession session) {
+			System.out.println("addmore edfdef"+userAddress);
+
+			User user=(User)session.getAttribute("user");
+			
+			userAddress.setUserObj(user);
+			userDao.addNewAddress(userAddress); 
+			ModelAndView mv = new ModelAndView("Address");
+			mv.addObject("listofAddres","Address Added");
+			return mv;
+		}
+	} 

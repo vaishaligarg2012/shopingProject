@@ -190,24 +190,12 @@ public class CartController {
 	public ModelAndView increseQuantity(@PathVariable int itemId) {
 		List<Category> categories=categoryDao.viewAllCategory();
 		List<Product> product = productDao.viewAllProduct();
-		/*int totalQuan=0;
-		for(Product productQ: product) {
-			totalQuan=productQ.getQuantity();
-		}*/
+		
 		Principal p = request.getUserPrincipal();
 		String userEmail = p.getName();
 		ModelAndView mv = new ModelAndView("ViewCart");
 		mv.addObject("categoryList",categories);
 		mv.addObject("productList",product);
-		/*Cart cartObjquan=cartDao.getCartByCustomer(userEmail);
-		Collection<Item> itemsQuan=cartObjquan.getItems();
-		for(Item itemQuan:itemsQuan){
-			if(itemQuan.getQunatity()>totalQuan) {
-				mv.addObject("msg","you reach ");
-
-			}
-		}*/
-
 		boolean itemPlus= itemDao.increaseQuantity(itemId);
 		if(itemPlus) {
 			mv.addObject("msg","Item added");

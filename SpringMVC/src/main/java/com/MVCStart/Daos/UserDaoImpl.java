@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.MVCStart.Models.User;
 //import com.MVCStart.Models.UserAddress;
+import com.MVCStart.Models.UserAddress;
 
 @Repository("UserDao")
 @Transactional
@@ -75,31 +76,31 @@ public class UserDaoImpl implements UserDao {
 		}
 		return null;
 	}
-//
-//	@Override
-//	public boolean addNewAddress(UserAddress userAddress) {
-//		// TODO Auto-generated method stub
-//		try {
-//			Session session= sessionFactory.getCurrentSession();
-//			session.save(userAddress);
-//			return true;
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return false;
-//	}
-//
-//	@Override
-//	public UserAddress getAllAddressByUserId(String userId) {
-//		// TODO Auto-generated method stub
-//		try {
-//			Session session = sessionFactory.getCurrentSession();
-//			UserAddress userAddress =session.get(UserAddress.class, userId);
-//			return userAddress;
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
+
+	@Override
+	public boolean addNewAddress(UserAddress userAddress) {
+		// TODO Auto-generated method stub
+		try {
+			Session session= sessionFactory.getCurrentSession();
+			session.save(userAddress);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public UserAddress getAllAddressByUserId(String userId) {
+		// TODO Auto-generated method stub
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			UserAddress userAddress =session.get(UserAddress.class, userId);
+			return userAddress;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
