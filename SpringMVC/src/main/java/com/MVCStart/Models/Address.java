@@ -12,7 +12,7 @@ public class Address {
 	    
 	    @Id
 	    @GeneratedValue(strategy=GenerationType.AUTO)
-	    private String addressId;
+	    private int addressId;
 	    private String addressLine;
 	    private String city;
 	    private String state;
@@ -21,11 +21,13 @@ public class Address {
 		private Integer pincode;
 		
 	
-		public String getAddressId() {
+
+
+		public int getAddressId() {
 			return addressId;
 		}
 
-		public void setAddressId(String addressId) {
+		public void setAddressId(int addressId) {
 			this.addressId = addressId;
 		}
 

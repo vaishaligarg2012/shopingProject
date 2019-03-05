@@ -6,7 +6,7 @@
 	scope="session" />
 
 <link rel="shortcut icon" href="http://iconsetc.com/icons-watermarks/flat-circle-white-on-red/classica/classica_shopping-cart/classica_shopping-cart_flat-circle-white-on-red_512x512.png" type="image/x-icon" />
-
+  
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"

@@ -5,9 +5,9 @@
 
 	<groupId>com.MVCStart</groupId>
 	<artifactId>SpringMVC</artifactId>
-	<version>0.0.1-SNAPSHOT</version>  
+	<version>0.0.1-SNAPSHOT</version>    
 	<packaging>jar</packaging>
-
+  
 	<name>SpringMVC</name>
 	<url>http://maven.apache.org</url>
 

@@ -5,7 +5,7 @@
 	scope="session" />
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url value="/resources/design" var="design" scope="session" />
- 
+   
 <nav class="navbar navbar-expand-sm  bg-light border "
 	style="margin-bottom: 0px">
 	<div class="container">

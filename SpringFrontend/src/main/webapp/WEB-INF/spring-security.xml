@@ -9,14 +9,12 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
-	<http pattern="/resources/**" security="none" />
-
-
+	<http pattern="/resources/**" security="none" />    
 	<http use-expressions="true" auto-config="true">
-		<intercept-url pattern="/addToCart/**"
+		<intercept-url pattern="/addToCart/**"   
 			access="hasAuthority('User')" />  
 		<form-login login-page="/login" username-parameter="ssoId"
-			password-parameter="password"
+			password-parameter="password"  
 			authentication-failure-url="/access-denied" />
 		<csrf />
 		<access-denied-handler

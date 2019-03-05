@@ -26,7 +26,8 @@
 
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
-
+<sec:authorize access="hasAuthority('User') OR isAnonymous()">
+	
 <div class="container">
 	<div class="row">
 		<c:forEach items="${categoryList}" var="category">
@@ -47,7 +48,7 @@
 	</div>
 
 </div>
-
+</sec:authorize>
 <sec:authorize access="hasAuthority('Admin')">
 				
 <div class="card">

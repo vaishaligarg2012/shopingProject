@@ -7,7 +7,7 @@
   <ul class="nav navbar-nav">  
       <li class=""><a href="${contextRoot}/HomePage">Home</a></li>
       
-      
+       
       <li class="dropdown">   
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop By Category
         </a>

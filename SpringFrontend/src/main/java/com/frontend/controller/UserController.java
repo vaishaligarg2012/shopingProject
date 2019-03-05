@@ -27,7 +27,7 @@ public class UserController {
    
 	     @Autowired
 	     UserDao userDao;
-	     @Autowired
+	     @Autowired 
 	     PhoneValidation phonevalidation;
 	     @Autowired
 	     PasswordValidation passwordValidation;

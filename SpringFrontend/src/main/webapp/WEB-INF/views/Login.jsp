@@ -4,7 +4,7 @@
 <c:url var="loginUrl" value="/login" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"
 	scope="session" />
-  
+    
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <title>Login</title>
 <meta name="google-signin-client_id"

@@ -22,12 +22,11 @@ import com.MVCStart.Models.Order;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.Supplier;
 import com.MVCStart.Models.User;
-import com.MVCStart.Models.UserAddress;
 
 @Configuration
 @EnableTransactionManagement 
 @ComponentScan(basePackages={"com.MVCStart"})
-public class DBConfig {
+public class DBConfig {  
 
 	@Bean(name="dataSource")
 	public DataSource getDataSource() {
@@ -53,15 +52,14 @@ public class DBConfig {
 		sb.addProperties(p);
 		sb.scanPackages("com.MVCStart");
 		sb.addAnnotatedClass(Address.class);
-		sb.addAnnotatedClass(Supplier.class);
+		sb.addAnnotatedClass(Supplier.class);  
 		sb.addAnnotatedClass(Category.class);
 		sb.addAnnotatedClass(Product.class);
 		sb.addAnnotatedClass(User.class);
 		sb.addAnnotatedClass(Item.class);
 		sb.addAnnotatedClass(Cart.class);
 		sb.addAnnotatedClass(Order.class);
-		sb.addAnnotatedClass(UserAddress.class);
-
+		
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();
 	}  
