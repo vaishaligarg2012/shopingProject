@@ -27,63 +27,66 @@
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
 <sec:authorize access="hasAuthority('User') OR isAnonymous()">
-	
-<div class="container">
-	<div class="row">
-		<c:forEach items="${categoryList}" var="category">
-			<div class="card" style="padding-top: 10px;">
-				<div class="container">
 
-					<h4>${category.catId }</h4>
-					<h4>${category.catName}</h4>
-					<h4>${category.catDescription}</h4>
+	<div class="container">
+		<div class="row">
+			<c:forEach items="${categoryList}" var="category">
+				<div class="card" style="padding-top: 10px;">
+					<div class="container">
+
+						<h4>${category.catId }</h4>
+						<h4>${category.catName}</h4>
+						<h4>${category.catDescription}</h4>
+					</div>
+					<div>
+						<a type="button"
+							href="${contextRoot}/viewProductsById/${category.catId}"
+							class="btn btn-outline-danger">Shop Now</a>
+					</div>
 				</div>
-				<div>  
-				 <a type="button"
-						href="${contextRoot}/viewProductsById/${category.catId}"
-						class="btn btn-outline-danger">Shop Now</a>
-				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
+
 	</div>
-
-</div>
 </sec:authorize>
 <sec:authorize access="hasAuthority('Admin')">
-				
-<div class="card">
-<div class="col col-xs-6 text-right" style="width:86%">
-                    <a type="button" class="btn btn-sm btn-primary btn-create" href="${contextRoot}/AddCategory">Add New Category</a>
-                  </div>
-	
-	<div class="container">
-	                  
-		<table id="example" class="table table-striped table-bordered nowrap">
-			<thead>
-				<tr>
-					<th>Category Id</th>
-					<th>Category Name</th>
-					<th>Category Description</th>
-					<th><em class="fa fa-cog"></em></th>
 
-				</tr>
-			</thead>
-			<c:forEach items="${categoryList}" var="category">
-				<tr>
-					<td>${category.catId }</td>
-					<td>${category.catName}</td>
-					<td>${category.catDescription}</td>
-					
-					<td align="center"><a 
-						href="${contextRoot}/updateCategory/${category.catId}"><i class="material-icons">create</i></a> 
-						<a href="${contextRoot}/deleteCategory/${category.catId}""><i class='fas fa-trash'></i></a></td>
+	<div class="card">
+		<div class="col col-xs-6 text-right" style="width: 86%">
+			<a type="button" class="btn btn-sm btn-primary btn-create"
+				href="${contextRoot}/AddCategory">Add New Category</a>
+		</div>
 
-				</tr>
-			</c:forEach>
+		<div class="container">
 
-		</table>
+			<table id="example" class="table table-striped table-bordered nowrap">
+				<thead>
+					<tr>
+						<th>Category Id</th>
+						<th>Category Name</th>
+						<th>Category Description</th>
+						<th><em class="fa fa-cog"></em></th>
+
+					</tr>
+				</thead>
+				<c:forEach items="${categoryList}" var="category">
+					<tr>
+						<td>${category.catId }</td>
+						<td>${category.catName}</td>
+						<td>${category.catDescription}</td>
+
+						<td align="center"><a
+							href="${contextRoot}/updateCategory/${category.catId}"><i
+								class="material-icons">create</i></a> <a
+							href="${contextRoot}/deleteCategory/${category.catId}""><i
+								class='fas fa-trash'></i></a></td>
+
+					</tr>
+				</c:forEach>
+
+			</table>
+		</div>
 	</div>
-</div>
 
 </sec:authorize>
 

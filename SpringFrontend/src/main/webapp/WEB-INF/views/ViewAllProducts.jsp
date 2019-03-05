@@ -49,20 +49,20 @@
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
 
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="${contextRoot}/HomePage">Home</a></li>
-						<li class="breadcrumb-item"><a
-							href="${contextRoot}/viewAllCategory">Category</a></li>
-						<li class="breadcrumb-item active" aria-current="page">${nameToDisplay}</li>
-					</ol>
-				</nav>
-			</div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="${contextRoot}/HomePage">Home</a></li>
+					<li class="breadcrumb-item"><a
+						href="${contextRoot}/viewAllCategory">Category</a></li>
+					<li class="breadcrumb-item active" aria-current="page">${nameToDisplay}</li>
+				</ol>
+			</nav>
 		</div>
 	</div>
+</div>
 
 <sec:authorize access="hasAuthority('Admin')">
 	<link rel="stylesheet"
@@ -94,9 +94,9 @@
 				<th>Update</th>
 				<th>Delete</th>
 			</tr>
-				<c:forEach items="${listOfProduct}" var="prodObj">
-			<tr>
-			
+			<c:forEach items="${listOfProduct}" var="prodObj">
+				<tr>
+
 					<td>${prodObj.productName}</td>
 					<td>${prodObj.price}</td>
 					<td>${prodObj.quantity}</td>
@@ -113,18 +113,18 @@
 						href="${contextRoot}/deleteProduct/${prodObj.productId}"> <span
 							class="glyphicon glyphicon-trash"></span>
 					</a></td>
-								</tr>
-					
-				</c:forEach>
+				</tr>
+
+			</c:forEach>
 
 		</table>
 	</div>
 </sec:authorize>
 
-	
 
-	<sec:authorize access="hasAuthority('User') OR isAnonymous()">
-	
+
+<sec:authorize access="hasAuthority('User') OR isAnonymous()">
+
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-sm-3">
@@ -152,7 +152,8 @@
 								<div class="card-body" style="height: 215px;">
 									<h4 class="card-title">
 										<a data-toggle="modal" style="cursor: grab;"
-											href="${contextRoot}/productDetail/${productObj.productId}" title="View Product">${productObj.productName}</a>
+											href="${contextRoot}/productDetail/${productObj.productId}"
+											title="View Product">${productObj.productName}</a>
 									</h4>
 
 									<p class="card-text">${productObj.productDescription}</p>
@@ -166,10 +167,10 @@
 												href="${contextRoot}/addToCart/${productObj.productId}"><i
 												class="fas fa-shopping-cart">Add to cart</i></a>
 
-											</div>
+										</div>
 									</div>
 								</div>
-							</div> 
+							</div>
 						</div>
 					</c:forEach>
 
@@ -177,7 +178,7 @@
 			</div>
 		</div>
 	</div>
-	</sec:authorize>
+</sec:authorize>
 <style>
 .glyphicon {
 	margin-right: 5px;
