@@ -6,6 +6,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.MVCStart.Models.Product;
+import com.MVCStart.Models.UserAddress;
 
 @Component
 public class ProductSuppllierDropDown implements Validator{
@@ -19,7 +20,7 @@ public class ProductSuppllierDropDown implements Validator{
 	@Override
 	public void validate(Object target,Errors error) {
 		Product product = (Product)target;
-		
+	
 		ValidationUtils.rejectIfEmpty(error, "supplierId", "required.selectSupplier");
 		
 		if(product.getSupplierId()==0) {

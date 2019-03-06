@@ -23,7 +23,7 @@
 			    ${listObj.userState}
 				${listObj.userPinCode}
 				<button id="cancelBtn" name="cancelBtn" class="btn btn-inverse">Cancel</button>
-				<button id="saveBtn" name="saveBtn" href="${contextRoot}/paymemtPage/" class="btn btn-success">Deliver
+				<button id="saveBtn" name="saveBtn" href="${contextRoot}/createNewPage/" class="btn btn-success">Deliver
 					to this address</button>
 			</div>
 		</div>
@@ -33,12 +33,10 @@
 <div class="row">
 
 	<div class="col-md-4 col-md-offset-4">
-
 		<f:form class="form-horizontal" role="form"
-			action="${contextRoot}/createNewPage" method="post"
+			action="${contextRoot}/Reciept" method="POST"
 			modelAttribute="key1">
 			<fieldset>
- 
 				<!-- Form Name -->
 				<p>Is the address you'd like to use displayed below? If so,
 					click the corresponding "Deliver to this address" button.</p>
@@ -49,7 +47,7 @@
 					<div class="col-sm-10">
 						<f:input type="text" placeholder="Address Line 1" id="userAddressLine"
 							name="userAddressLine" path="userAddressLine" class="form-control" />
-
+                         <f:errors style="color: red;" path="userAddressLine"/>
 					</div>
 				</div>
 
@@ -60,6 +58,7 @@
 					<div class="col-sm-10">
 						<f:input type="text" placeholder="City" id="userCity" name="userCity"
 							path="userCity" class="form-control" />
+							<f:errors style="color: red;"   path="userCity"/>
 					</div>
 				</div>
 
@@ -69,12 +68,14 @@
 					<div class="col-sm-4">
 						<f:input type="text" placeholder="State" id="userState" name="userState"
 							path="userState" class="form-control" />
+							<f:errors style="color: red;"  path="userState"/>
 					</div>
 
 					<label class="col-sm-2 control-label" for="textinput">Postcode</label>
 					<div class="col-sm-4">
 						<f:input type="text" placeholder="Post Code" id="userPinCode"
 							name="userPinCode" path="userPinCode" class="form-control" />
+							<f:errors style="color: red;"  path="userPinCode"/>
 					</div>
 				</div>
 				<div class="form-group">

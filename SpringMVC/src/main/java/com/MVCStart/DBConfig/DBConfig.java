@@ -19,6 +19,7 @@ import com.MVCStart.Models.Cart;
 import com.MVCStart.Models.Category;
 import com.MVCStart.Models.Item;
 import com.MVCStart.Models.Order;
+import com.MVCStart.Models.Payment;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.Supplier;
 import com.MVCStart.Models.User;
@@ -59,8 +60,9 @@ public class DBConfig {
 		sb.addAnnotatedClass(User.class);
 		sb.addAnnotatedClass(Item.class);
 		sb.addAnnotatedClass(Cart.class);
-		sb.addAnnotatedClass(Order.class);
+	    sb.addAnnotatedClass(Order.class);
 		sb.addAnnotatedClass(UserAddress.class);
+		sb.addAnnotatedClass(Payment.class);
 		
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();

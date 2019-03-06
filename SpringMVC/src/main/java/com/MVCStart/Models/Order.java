@@ -10,54 +10,65 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="OrderTable_04")
+@Table(name="OrderTable")
 public class Order {
-	
-	
-
-		@Id
-		@GeneratedValue(strategy=GenerationType.AUTO)
-		private int orderId;
-		
-		@ManyToOne
-		@JoinColumn(name="email")
-		private User user; //one user can give multiple orders
-		
-		
-		@OneToOne
-		@JoinColumn(name="addressId")
-		private Address address;
 
 
-		public int getOrderId() {
-			return orderId;
-		}
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int orderId;
+
+	@ManyToOne
+	@JoinColumn(name="email")
+	private User user; //one user can give multiple orders
 
 
-		public void setOrderId(int orderId) {
-			this.orderId = orderId;
-		}
+	@OneToOne
+	@JoinColumn(name="addressId")
+	private Address address;
+
+	private double totalAmountPaid;
+
+	public double getTotalAmountPaid() {
+		return totalAmountPaid;
+	}
 
 
-		public User getUser() {
-			return user;
-		}
+	public void setTotalAmountPaid(double totalAmountPaid) {
+		this.totalAmountPaid = totalAmountPaid;
+	}
 
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+	public int getOrderId() {
+		return orderId;
+	}
 
 
-		public Address getAddress() {
-			return address;
-		}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
 
 
-		public void setAddress(Address address) {
-			this.address = address;
-		}
-		
-		
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+
 
 }

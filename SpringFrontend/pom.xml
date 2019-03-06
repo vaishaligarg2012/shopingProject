@@ -11,7 +11,7 @@
 	<dependencies>  
 		<dependency>    
 			<groupId>com.MVCStart</groupId>
-			<artifactId>SpringMVC</artifactId>      
+			<artifactId>SpringMVC</artifactId>        
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>     
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->

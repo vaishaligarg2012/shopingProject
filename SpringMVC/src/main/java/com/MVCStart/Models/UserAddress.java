@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="UserAddress")
@@ -16,14 +19,21 @@ public class UserAddress {
 	    @Id
 	    @GeneratedValue(strategy=GenerationType.AUTO)
 	    private int userAddressId;
+	    
+	    @NotEmpty	
 	    private String userAddressLine;
+	    
+	    @NotEmpty
 	    private String userCity;
+	    
+	    @NotEmpty 
 	    private String userState;
 	    
 	   // @Pattern(regexp="^[a-zA-Z0-9]{5}", message="only 5 chars/digits")
+	    @NotNull
 		private Integer userPinCode;
 		
-		@ManyToOne(fetch=FetchType.EAGER)
+	    @ManyToOne(fetch=FetchType.EAGER)
 		@JoinColumn(name="userEmail")
 		private User userObj;
 
