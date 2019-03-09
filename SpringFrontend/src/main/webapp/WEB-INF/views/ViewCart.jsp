@@ -21,7 +21,9 @@
 			<h1>Empty Cart</h1>
 		</c:when>
 		<c:otherwise>
+		<div class="alert alert-success">
 		${msg}
+		</div>
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>

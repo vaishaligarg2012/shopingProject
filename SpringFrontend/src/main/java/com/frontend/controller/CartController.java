@@ -190,43 +190,43 @@ public class CartController {
 	public ModelAndView increseQuantity(@PathVariable int itemId) {
 		List<Category> categories=categoryDao.viewAllCategory();
 		List<Product> product = productDao.viewAllProduct();
-		
-		Principal p = request.getUserPrincipal();
-		String userEmail = p.getName();
 		ModelAndView mv = new ModelAndView("ViewCart");
-		mv.addObject("categoryList",categories);
-		mv.addObject("productList",product);
-		boolean itemPlus= itemDao.increaseQuantity(itemId);
-		if(itemPlus) {
-			mv.addObject("msg","Item added");
-			int size=0;
-			int grandTotal=0;
-			Cart cartObj=cartDao.getCartByCustomer(userEmail);
-
-			if(cartObj!=null){
-				Collection<Item> items=cartObj.getItems();
-				for(Item item:items){
-					size=size+item.getQunatity();
-
-				}
-				mv.addObject("itemsList",items);
-				for(Item items12: items) {
-					grandTotal+=(int) (items12.getPrice()*items12.getQunatity());
-
-				}
-
-				session.setAttribute("grandTotal",NumberFormat.getCurrencyInstance(new Locale("en", "US"))
-						.format(grandTotal));
-
-			}
-
-			session.setAttribute("items",size);
-
-			return mv;
+		
+		Item i = itemDao.getItemByItemId(itemId);
+		if(i.getQunatity()<i.getProduct().getQuantity()) {
+			 itemDao.increaseQuantity(itemId);
+			 mv.addObject("msg","Item Added");
+					 
 		}else {
-			mv.addObject("msg","Item Not Added");
-			return mv;
+			 mv.addObject("msg","out of stock");
 		}
+			 Principal p = request.getUserPrincipal();
+			String userEmail = p.getName();
+			mv.addObject("categoryList",categories);
+			mv.addObject("productList",product);
+				int size=0;
+				int grandTotal=0;
+				Cart cartObj=cartDao.getCartByCustomer(userEmail);
+
+				if(cartObj!=null){
+					Collection<Item> items=cartObj.getItems();
+					for(Item item:items){
+						size=size+item.getQunatity();
+
+					}
+					mv.addObject("itemsList",items);
+					for(Item items12: items) {
+						grandTotal+=(int) (items12.getPrice()*items12.getQunatity());
+
+					}
+
+					session.setAttribute("grandTotal",NumberFormat.getCurrencyInstance(new Locale("en", "US"))
+							.format(grandTotal));
+
+				}
+            	session.setAttribute("items",size);
+             	return mv;
+		
 	}
 
 

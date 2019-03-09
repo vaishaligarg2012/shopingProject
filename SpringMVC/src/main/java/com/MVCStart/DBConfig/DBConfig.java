@@ -63,6 +63,7 @@ public class DBConfig {
 	    sb.addAnnotatedClass(Order.class);
 		sb.addAnnotatedClass(UserAddress.class);
 		sb.addAnnotatedClass(Payment.class);
+		//sb.addAnnotatedClass(OrderItems.class);
 		
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();

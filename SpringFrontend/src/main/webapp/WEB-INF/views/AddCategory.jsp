@@ -20,7 +20,9 @@
 		action="${contextRoot}/${submitUpdateOrAdd}" method="post"
 		modelAttribute="key12" >
 		<fieldset>
+		<div class="alert alert-success">
 			${msg}
+		</div>
 			<!-- Form Name -->
 			<legend>${formLabel}</legend>
 			<!-- Text input-->

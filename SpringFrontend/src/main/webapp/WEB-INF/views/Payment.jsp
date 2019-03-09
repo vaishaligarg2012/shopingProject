@@ -45,8 +45,7 @@
 								<f:input type="text" path="nameOnCard" class="form-control"
 									id="nameOnCard" placeholder="Name on card" />
 								<f:errors style="color: red;" path="nameOnCard" />
-
-							</div>
+                            </div>
 						</div>
 						<div class="row">
 							<div class="col-xs-7 col-md-7">

@@ -63,7 +63,10 @@
 	<a type="button" class="btn btn-sm btn-primary btn-create"
 		href="${contextRoot}/addSupplier">Add New Supplier</a>
 </div>
-<div>${msg}</div>
+
+<div class="alert alert-success">
+		${msg}
+</div>
 <div class="card">
 
 	<div class="container">

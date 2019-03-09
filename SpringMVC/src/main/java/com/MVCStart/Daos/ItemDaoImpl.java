@@ -133,5 +133,16 @@ public class ItemDaoImpl implements ItemDao {
 		
 		return false;
 	}
-
+	@Override
+	public Item getItemByItemId(int id) {
+		try{
+			Session session=sessionFactory.getCurrentSession();
+			Item obj=(Item)session.get(Item.class, id);
+			return obj;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
