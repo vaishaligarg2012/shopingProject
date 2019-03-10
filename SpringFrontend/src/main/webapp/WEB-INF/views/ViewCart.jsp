@@ -24,7 +24,7 @@
 		<div class="alert alert-success">
 		${msg}
 		</div>
-	<table id="cart" class="table table-hover table-condensed">
+	    <table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
 							<th style="width:50%;font-size:23px">Shopping Cart</th>

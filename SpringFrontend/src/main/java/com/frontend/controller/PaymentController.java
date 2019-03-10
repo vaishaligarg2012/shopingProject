@@ -1,5 +1,7 @@
 package com.frontend.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -27,6 +29,12 @@ public class PaymentController {
 	OrderDao orderDao;
 	@Autowired
 	CartDao cartDao;
+	
+	@Autowired
+	HttpServletRequest request;
+
+	@Autowired
+	HttpSession session; 
 
 	@Autowired 
 	UserDao userDao;
@@ -63,13 +71,24 @@ public class PaymentController {
 
 			return mv;   
 		}else {
-			Order order= new Order();
-			order.setTotalAmountPaid(2222);
-			orderDao.addOrder(order);
 			ModelAndView mv= new ModelAndView("Payment");
+			Order order= new Order();
+			Principal p = request.getUserPrincipal();
+			String userEmail = p.getName();
+			User user= userDao.getUserById(userEmail);
+			UserAddress useradd= userDao.getAllAddressByUserId(userEmail);
+			double grandTotal = new CartController().getGrandTotal();
+			//user address id is not set in db orderTable
+		    order.setAddress(useradd);
+		    order.setUser(user);
+		    //similarly grand total
+			order.setTotalAmountPaid(new CartController().getGrandTotal());
+			mv.addObject("grandTotal",grandTotal);
+			//session.setAttribute("grandTotal", grandTotal);
+			orderDao.addOrder(order);
 			paymentDao.addPayments(payment);	   
 			return mv;
 		}
-	}
+	} 
 
 } 

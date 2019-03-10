@@ -126,7 +126,7 @@ public class UserController {
 	public ModelAndView createNewAddress() {
 		 ModelAndView mv = new ModelAndView("Payment");
 		 	mv.addObject("key2",new Payment());
-			
+		 	System.out.println(new CartController().getGrandTotal());
     	 return mv;	
         
 //		if(result.hasErrors()) {

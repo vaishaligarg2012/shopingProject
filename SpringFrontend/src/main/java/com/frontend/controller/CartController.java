@@ -278,4 +278,23 @@ public class CartController {
 		}
 	}
 
+	public double getGrandTotal() {
+		double price=0;
+		try {
+			Principal p = request.getUserPrincipal();
+			String userEmail = p.getName();
+		
+			Cart cartObj = cartDao.getCartByCustomer("garg@gmail.com");
+			Collection<Item> items=cartObj.getItems();
+			for(Item item: items) {
+				System.out.println("GrandTotal"+price);
+				price=price + (item.getPrice()*item.getQunatity());
+			}
+			return price;
+				
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

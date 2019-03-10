@@ -26,7 +26,7 @@ public class Order {
 
 	@OneToOne
 	@JoinColumn(name="addressId")
-	private Address address;
+	private UserAddress address;
 
 	private double totalAmountPaid;
 
@@ -60,14 +60,16 @@ public class Order {
 	}
 
 
-	public Address getAddress() {
+	public UserAddress getAddress() {
 		return address;
 	}
 
 
-	public void setAddress(Address address) {
+	public void setAddress(UserAddress address) {
 		this.address = address;
 	}
+
+
 
 
 

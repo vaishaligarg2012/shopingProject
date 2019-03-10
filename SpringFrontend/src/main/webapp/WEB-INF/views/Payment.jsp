@@ -7,7 +7,12 @@
 <!------ Include the above in your HEAD tag ---------->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:url value="/resources/images" var="images" scope="session" />
+    <c:set var="contextRoot" value="${pageContext.request.contextPath}"
+	scope="session" />
 
+<
 <%@include file="HeadScript.jsp"%>
 <%@include file="NavBar.jsp"%>
 
@@ -81,7 +86,7 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"><span
 							class="badge pull-right"><span
-								class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a></li>
+								class="glyphicon glyphicon-usd"></span>${grandTotal}</span> Final Payment</a></li>
 				</ul>
 				<br />
 				<button id="saveBtn" name="saveBtn" class="btn btn-success">PAY</button>

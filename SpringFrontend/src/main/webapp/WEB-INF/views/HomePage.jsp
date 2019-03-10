@@ -43,25 +43,7 @@
 </div>
 <div class="upcoming py-5">
     <div class="container">
-    <div class="row pb-4 text-center">
-        <div class="col-md-12">
-            <h2>Shop by category</h2>
-           </div>
-    </div>
-	<div class="row text-center">
-		<c:forEach items="${categoryList}" var="category">
-					
-		<div class="col-md-3 box border py-4">
-		    
-		    <div class="box-cartitle">
-		        <h4>${category.catName}</h4>
-		    </div>
-		    
-		 <a type="button" href="${contextRoot}/viewProductsById/${category.catId}" class="btn btn-outline-danger">Shop Now</a>
-		</div>
-		</c:forEach>
-			</div>
-	<div class="row text-center pt-4">
+   	<div class="row text-center pt-4">
 	    <div class="col-md-12">
 	        <a type="button" class="btn btn-danger" href="${contextRoot}/viewProducts">View All Upcoming Products</a>
 	    </div>
