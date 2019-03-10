@@ -20,9 +20,12 @@
 		action="${contextRoot}/${submitUpdateOrAdd}" method="post"
 		modelAttribute="key12" >
 		<fieldset>
+		    <c:if test="${not empty msg}">
+	
 		<div class="alert alert-success">
 			${msg}
 		</div>
+	</c:if>
 			<!-- Form Name -->
 			<legend>${formLabel}</legend>
 			<!-- Text input-->

@@ -34,10 +34,13 @@
 			<!-- Form Name -->
 			<legend>${formLabel}</legend>
 			<!-- Text input-->
+			    <c:if test="${not empty msg}">
+	
 			<div class="alert alert-success">
 		
 			${msg}
 		</div>
+	</c:if>
 			<c:if test="${not empty op}">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="supplierId">Id</label>
