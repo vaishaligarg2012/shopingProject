@@ -18,10 +18,11 @@
         <!-- Form Name -->
         <legend>${title}</legend>
         <!-- Text input-->
-        <div class="alert alert-success">
-		
-        ${msg}
-        </div>
+        <c:if test="${not empty msg}">
+	      <div class="alert alert-success">
+            ${msg}
+           </div>
+        </c:if>
         <c:if test="${not empty op}">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="productId">Id</label>

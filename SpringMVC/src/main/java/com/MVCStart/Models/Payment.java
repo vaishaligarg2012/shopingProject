@@ -1,5 +1,6 @@
 package com.MVCStart.Models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Payment {
 	@NotEmpty
 	private String nameOnCard;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="orderId")
 	private Order orderId;
 	
