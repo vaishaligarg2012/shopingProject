@@ -39,15 +39,15 @@
 					<tbody>
 						<c:forEach items="${itemsList}" var="item">
 						<tr>
-							<td data-th="Shopping Cart">
+							<td  data-th="Shopping Cart">
 								<div class="row">
 									<div class="col-sm-2 hidden-xs"><img src="${images}/${item.product.imgname1}" class="img-responsive"/></div>
 									<div class="col-sm-10">
-										<h4 class="nomargin">${item.product.productName}</h4>
+										<h4 class="nomargin" ><a style="color: black;" href="${contextRoot}/productDetail/${item.product.productId}">${item.product.productName}</a></h4>
 										<p>${item.product.productDescription}</p>
 									</div>
 								</div>
-							</td>
+							</td>  
 							<td data-th="Price">${item.product.price}</td>
 							<td data-th="Quantity">
 								<input type="number" class="form-control text-center" value="${item.qunatity }">

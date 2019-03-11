@@ -283,7 +283,6 @@ public class CartController {
 		try {
 			Principal p = request.getUserPrincipal();
 			String userEmail = p.getName();
-		
 			Cart cartObj = cartDao.getCartByCustomer("garg@gmail.com");
 			Collection<Item> items=cartObj.getItems();
 			for(Item item: items) {

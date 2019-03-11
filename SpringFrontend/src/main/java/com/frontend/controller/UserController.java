@@ -24,10 +24,12 @@ import com.MVCStart.CustomValidations.Products.ProductCategorySelectValidation;
 import com.MVCStart.CustomValidations.Products.ProductSuppllierDropDown;
 import com.MVCStart.Daos.CategoryDao;
 import com.MVCStart.Daos.OrderDao;
+import com.MVCStart.Daos.ProductDao;
 import com.MVCStart.Daos.UserDao;
 import com.MVCStart.Models.Category;
 import com.MVCStart.Models.Order;
 import com.MVCStart.Models.Payment;
+import com.MVCStart.Models.Product;
 import com.MVCStart.Models.User;
 import com.MVCStart.Models.UserAddress;
 
@@ -44,6 +46,8 @@ public class UserController {
 	CategoryDao categoryDao;
 	@Autowired
 	OrderDao orderDao;
+	@Autowired
+	ProductDao productDao;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginUser() {
@@ -103,44 +107,55 @@ public class UserController {
 
 	@Autowired
 	HttpSession session;
- 
-	
+
+
 	@RequestMapping(value="addressPage", method=RequestMethod.GET)
 	public ModelAndView openAddressPage() {
-	     //  UserAddress userAddress= new UserAddress();
+		//  UserAddress userAddress= new UserAddress();
 
-			ModelAndView mv = new ModelAndView("Address");
+		ModelAndView mv = new ModelAndView("Address");
+		List<Category> categories=categoryDao.viewAllCategory();
+		List<Product> product = productDao.viewAllProduct();
+		mv.addObject("categoryList",categories);
+		mv.addObject("productList",product);
+
 		//s	mv.addObject("key1",userAddress);
 
-	//		List<UserAddress> address = (List<UserAddress>) userDao.getAllAddressByUserId("garg@gmail.com");
+		//		List<UserAddress> address = (List<UserAddress>) userDao.getAllAddressByUserId("garg@gmail.com");
 		//	mv.addObject("listofAddres",address);
 
 		//	System.out.println("geting"+address.getUserAddressId());
-		
+
 		//User user=(User)session.getAttribute("user");
-	     	mv.addObject("key1",new UserAddress());
+		mv.addObject("key1",new UserAddress());
 		//mv.addObject("listofAddres", userDao.getAllAddressByUserId(user.getEmail()) );
 		return mv;
 	}
 	@RequestMapping(value="createNewPage", method = RequestMethod.GET)
 	public ModelAndView createNewAddress() {
-		 ModelAndView mv = new ModelAndView("Payment");
-		 	mv.addObject("key2",new Payment());
-		 	System.out.println(new CartController().getGrandTotal());
-    	 return mv;	
-        
-//		if(result.hasErrors()) {
-//		 System.out.println("I am here please check here");
-//		 ModelAndView mv = new ModelAndView("Address");
-//    	 return mv;	
-//        }else {
-//		System.out.println("I nooooooooo"); 
-//        User user=(User)session.getAttribute("user");
-//	    userAddress.setUserObj(user); 
-//		userDao.addNewAddress(userAddress); 
-//		ModelAndView mv= new ModelAndView("Reecipt");
-//		mv.addObject("listofAddres","Address Added");
-//		return mv;
-//        }
-    }
+
+		ModelAndView mv = new ModelAndView("Payment");
+		List<Category> categories=categoryDao.viewAllCategory();
+		List<Product> product = productDao.viewAllProduct();
+		mv.addObject("categoryList",categories);
+		mv.addObject("productList",product);
+
+		mv.addObject("key2",new Payment());
+		System.out.println(new CartController().getGrandTotal());
+		return mv;	
+
+		//		if(result.hasErrors()) {
+		//		 System.out.println("I am here please check here");
+		//		 ModelAndView mv = new ModelAndView("Address");
+		//    	 return mv;	
+		//        }else {
+		//		System.out.println("I nooooooooo"); 
+		//        User user=(User)session.getAttribute("user");
+		//	    userAddress.setUserObj(user); 
+		//		userDao.addNewAddress(userAddress); 
+		//		ModelAndView mv= new ModelAndView("Reecipt");
+		//		mv.addObject("listofAddres","Address Added");
+		//		return mv;
+		//        }
+	}
 } 

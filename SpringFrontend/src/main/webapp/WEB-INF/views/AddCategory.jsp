@@ -18,14 +18,12 @@
 <body>
 	<f:form class="form-horizontal"
 		action="${contextRoot}/${submitUpdateOrAdd}" method="post"
-		modelAttribute="key12" >
+		modelAttribute="key12">
 		<fieldset>
-		    <c:if test="${not empty msg}">
-	
-		<div class="alert alert-success">
-			${msg}
-		</div>
-	</c:if>
+			<c:if test="${not empty msg}">
+
+				<div class="alert alert-success">${msg}</div>
+			</c:if>
 			<!-- Form Name -->
 			<legend>${formLabel}</legend>
 			<!-- Text input-->
@@ -45,7 +43,7 @@
 				<div class="col-md-5">
 					<f:input id="title" path="catName" name="title" type="text"
 						placeholder="Category Title" class="form-control input-md" />
-						<f:errors path="catName"/>
+					<f:errors path="catName" />
 				</div>
 			</div>
 
@@ -57,7 +55,7 @@
 					<f:textarea style="width: 100%;" class="form-control"
 						placeholder="Description" path="catDescription" id="description"
 						name="description" />
-						<f:errors styles="color: red;" path="catDescription"/>
+					<f:errors styles="color: red;" path="catDescription" />
 				</div>
 			</div>
 

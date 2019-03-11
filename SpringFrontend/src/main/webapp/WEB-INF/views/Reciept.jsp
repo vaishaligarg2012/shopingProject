@@ -115,7 +115,7 @@
     		</div>
     	</div>
     </div>
-    	<button id="saveBtn" name="saveBtn" class="btn btn-success">PAY NOW</button>
+    	<button id="saveBtn" style="float: right;" name="saveBtn" class="btn btn-success">Proceed to pay</button>
 			            </f:form>
     
 </div>

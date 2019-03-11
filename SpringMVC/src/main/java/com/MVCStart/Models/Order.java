@@ -1,5 +1,6 @@
 package com.MVCStart.Models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +20,14 @@ public class Order {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
 
-	@ManyToOne
-	@JoinColumn(name="email")
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="email",referencedColumnName="email")
 	private User user; //one user can give multiple orders
 
 
-	@OneToOne
-	@JoinColumn(name="addressId")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="addressId",referencedColumnName="userAddressId")
 	private UserAddress address;
 
 	private double totalAmountPaid;
