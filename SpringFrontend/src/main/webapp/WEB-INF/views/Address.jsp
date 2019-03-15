@@ -23,8 +23,8 @@
 			    ${listObj.userState}
 				${listObj.userPinCode}
 				<button id="cancelBtn" name="cancelBtn" class="btn btn-inverse">Cancel</button>
-				<button id="saveBtn" name="saveBtn" href="${contextRoot}/createNewPage/" class="btn btn-success">Deliver
-					to this address</button>
+				<a id="saveBtn" name="saveBtn" href="${contextRoot}/Reciept/${listObj.userAddressId}" class="btn btn-success">Deliver
+					to this address</a>
 			</div>
 		</div>
 	</c:forEach> 
@@ -82,8 +82,7 @@
 					<div class="col-sm-offset-2 col-sm-10">
 						<div class="pull-right">
 
-							<button id="saveBtn" name="saveBtn" class="btn btn-success">Deliver
-								to this address</button>
+							<button id="saveBtn" name="saveBtn" class="btn btn-success">Add Address</button>
 							<button id="cancelBtn" name="cancelBtn" class="btn btn-inverse">Cancel</button>
 
 						</div> 

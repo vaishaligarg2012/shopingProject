@@ -17,10 +17,10 @@
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    					John Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
+    					${userObj.fName}<br>
+    					${addressObj.userAddressLine}<br>
+    					${addressObj.userCity}<br>
+    					${addressObj.userState}
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
@@ -115,7 +115,8 @@
     		</div>
     	</div>
     </div>
-    	<button id="saveBtn" style="float: right;" name="saveBtn" class="btn btn-success">Proceed to pay</button>
+    	<button id="saveBtn" style="float: right;" name="saveBtn" class="btn btn-success">Proceed to pay
+			            </button>
 			            </f:form>
     
 </div>

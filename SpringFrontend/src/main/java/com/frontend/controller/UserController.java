@@ -1,4 +1,5 @@
 package com.frontend.controller;
+import java.security.Principal;
 import java.util.List;
 import java.util.Set;
 
@@ -110,7 +111,7 @@ public class UserController {
 
 
 	@RequestMapping(value="addressPage", method=RequestMethod.GET)
-	public ModelAndView openAddressPage() {
+	public ModelAndView openAddressPage(HttpServletRequest request) {
 		//  UserAddress userAddress= new UserAddress();
 
 		ModelAndView mv = new ModelAndView("Address");
@@ -128,7 +129,11 @@ public class UserController {
 
 		//User user=(User)session.getAttribute("user");
 		mv.addObject("key1",new UserAddress());
-		//mv.addObject("listofAddres", userDao.getAllAddressByUserId(user.getEmail()) );
+		
+		Principal p=request.getUserPrincipal();
+		String email=p.getName();
+		
+		mv.addObject("listofAddres", userDao.getAllAddressByUserId(email));
 		return mv;
 	}
 	@RequestMapping(value="createNewPage", method = RequestMethod.GET)
@@ -141,7 +146,8 @@ public class UserController {
 		mv.addObject("productList",product);
 
 		mv.addObject("key2",new Payment());
-		System.out.println(new CartController().getGrandTotal());
+	
+		//System.out.println(new CartController().getGrandTotal());
 		return mv;	
 
 		//		if(result.hasErrors()) {

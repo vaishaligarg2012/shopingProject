@@ -162,5 +162,8 @@ public class CategoryController {
 	
 	
 
+	public void getAllCategorySupplierAndProduct() {
+		
+	}
 }
 

@@ -22,9 +22,12 @@ public class SupplierController {
 	SupplierDao supplierDao;
     @RequestMapping(value="addSupplier", method=RequestMethod.GET)
 	public ModelAndView showSupplierPage() {
-		Supplier supplier=new Supplier();
+		
+    	Supplier supplier=new Supplier();
 		Address address = new Address();
+		
 		supplier.setAddress(address);
+		
 		ModelAndView mv= new ModelAndView("addSupplier");
 		mv.addObject("key123",supplier );
 		mv.addObject("btnLabel","Add");
