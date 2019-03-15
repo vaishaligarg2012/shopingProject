@@ -13,21 +13,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name="OrderTable")
 public class Order {
-
-
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
 
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="email",referencedColumnName="email")
+	@JoinColumn(name="email")
 	private User user; //one user can give multiple orders
 
 
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="addressId",referencedColumnName="userAddressId")
+	@OneToOne(cascade=CascadeType.ALL,targetEntity=UserAddress.class)
+	@JoinColumn(name="addressId")
 	private UserAddress address;
 
 	private double totalAmountPaid;

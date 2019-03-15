@@ -91,16 +91,56 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public UserAddress getAllAddressByUserId(String userId) {
+	public List<UserAddress> getAllAddressByUserId(String userId) {
 		// TODO Auto-generated method stub
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			UserAddress userAddress =session.get(UserAddress.class, userId);
-			return userAddress;
+			Query query=session.createQuery("From UserAddress where userObj.email=:x");
+			query.setParameter("x",userId);
+			return query.getResultList();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public UserAddress getAddressById(int addressId) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			UserAddress adr=session.get(UserAddress.class, addressId);
+			return adr;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean deleteUserAddress(UserAddress userAddress) {
+		// TODO Auto-generated method stub
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			session.delete(userAddress);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+	@Override
+	public boolean updateUserAddress(UserAddress userAddress) {
+		// TODO Auto-generated method stub
+		try {
+			Session session =sessionFactory.getCurrentSession();
+			session.update(userAddress);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

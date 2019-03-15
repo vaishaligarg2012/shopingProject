@@ -89,7 +89,7 @@ public class ItemDaoImpl implements ItemDao {
 		// TODO Auto-generated method stub
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			Query query = session.createQuery("select Item where cart.cartId=:d");
+			Query query = session.createQuery("from Item where cart.cartId=:d");
 			query.setParameter("d", cartId);
 			List<Item> lists = query.getResultList();
 			if (lists.size() == 0) {

@@ -73,6 +73,16 @@
 						class="form-control input-md" />
 				</div>
 			</div>
+			<c:if test="${not empty op}">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="addressId">Id</label>
+					<div class="col-md-5">
+						<f:input id="addressId" path="address.addressId" name="addressId" type="text"
+							class="form-control input-md" readonly="true" />
+					</div>
+				</div>
+			</c:if>
+			
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="description">Full
 					Address</label>

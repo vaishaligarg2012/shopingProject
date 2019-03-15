@@ -24,9 +24,9 @@
    <mvc:annotation-driven/>  
    <mvc:resources location="/resources/" mapping="/resources/**"/>
    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
-  <bean class = "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+  <!-- <bean class = "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
      
       <property name = "defaultErrorView" value = "UserExceptionShowPage"/>
-   </bean>
+   </bean> -->
  
 </beans>          

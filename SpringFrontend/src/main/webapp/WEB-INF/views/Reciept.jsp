@@ -23,15 +23,6 @@
     					${addressObj.userState}
     				</address>
     			</div>
-    			<div class="col-xs-6 text-right">
-    				<address>
-        			<strong>Shipped To:</strong><br>
-    					Jane Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
-    				</address>
-    			</div>
     		</div>
     		<div class="row">
     			<div class="col-xs-6">
@@ -44,7 +35,7 @@
     			<div class="col-xs-6 text-right">
     				<address>
     					<strong>Order Date:</strong><br>
-    					March 7, 2014<br><br>
+    					 <%= (new java.util.Date()).toLocaleString()%><br><br>
     				</address>
     			</div>
     		</div>
@@ -72,43 +63,35 @@
     						</thead>
     						<tbody>
     							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+    						<c:forEach items="${orderDetails}" var="cartObj">
+	
     							<tr>
-    								<td>BS-200</td>
-    								<td class="text-center">$10.99</td>
-    								<td class="text-center">1</td>
-    								<td class="text-right">$10.99</td>
+    								<td>${cartObj.itemId }</td>
+    								<td class="text-center">${ cartObj.price}</td>
+    								<td class="text-center">${cartObj.qunatity}</td>
+    								<td class="text-right">${cartObj.price *cartObj.qunatity}</td>
     							</tr>
-                                <tr>
-        							<td>BS-400</td>
-    								<td class="text-center">$20.00</td>
-    								<td class="text-center">3</td>
-    								<td class="text-right">$60.00</td>
-    							</tr>
-                                <tr>
-            						<td>BS-1000</td>
-    								<td class="text-center">$600.00</td>
-    								<td class="text-center">1</td>
-    								<td class="text-right">$600.00</td>
-    							</tr>
-    							<tr>
+                        </c:forEach>
+							<tr>
     								<td class="thick-line"></td>
     								<td class="thick-line"></td>
     								<td class="thick-line text-center"><strong>Subtotal</strong></td>
-    								<td class="thick-line text-right">$670.99</td>
+    								<td class="thick-line text-right">${sessionScope.grandTotal}</td>
     							</tr>
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Shipping</strong></td>
-    								<td class="no-line text-right">$15</td>
+    								<td class="no-line text-right">$0</td>
     							</tr>
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Total</strong></td>
-    								<td class="no-line text-right">$685.99</td>
+    								<td class="no-line text-right">${sessionScope.grandTotal}</td>
     							</tr>
-    						</tbody>
+    						
+                        	</tbody>
     					</table>
     				</div>
     			</div>

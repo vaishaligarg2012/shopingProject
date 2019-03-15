@@ -19,12 +19,15 @@
 			<div class="card">
 				<h3>${sessionScope.user.fName} ${sessionScope.user.lName}</h3>
 				<p>${listObj.userAddressLine}</p>
-				${listObj.userCity}
+				<div style="margin-top: -9px;
+    margin-bottom: 14px;">${listObj.userCity}
 			    ${listObj.userState}
-				${listObj.userPinCode}
-				<button id="cancelBtn" name="cancelBtn" class="btn btn-inverse">Cancel</button>
+				${listObj.userPinCode}</div>
 				<a id="saveBtn" name="saveBtn" href="${contextRoot}/Reciept/${listObj.userAddressId}" class="btn btn-success">Deliver
 					to this address</a>
+				<a id="saveBtn" name="saveBtn" href="${contextRoot}/deleteUserAddress/${listObj.userAddressId}" class="btn btn-danger">Delete Address</a>
+			
+					
 			</div>
 		</div>
 	</c:forEach> 
@@ -81,8 +84,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<div class="pull-right">
-
-							<button id="saveBtn" name="saveBtn" class="btn btn-success">Add Address</button>
+						<button id="saveBtn" name="saveBtn" class="btn btn-success">Add Address</button>
 							<button id="cancelBtn" name="cancelBtn" class="btn btn-inverse">Cancel</button>
 
 						</div> 

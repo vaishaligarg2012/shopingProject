@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -109,9 +110,11 @@ public class UserController {
 	@Autowired
 	HttpSession session;
 
+	@Autowired
+	HttpServletRequest request;
 
 	@RequestMapping(value="addressPage", method=RequestMethod.GET)
-	public ModelAndView openAddressPage(HttpServletRequest request) {
+	public ModelAndView openAddressPage() {
 		//  UserAddress userAddress= new UserAddress();
 
 		ModelAndView mv = new ModelAndView("Address");
@@ -164,4 +167,22 @@ public class UserController {
 		//		return mv;
 		//        }
 	}
+	
+	@RequestMapping(value="deleteUserAddress/{userAddressId}", method=RequestMethod.GET)
+	public ModelAndView deleteUserAddress(@PathVariable("userAddressId") int id) {
+	UserAddress ua = userDao.getAddressById(id);
+	userDao.deleteUserAddress(ua);
+	ModelAndView mv = new ModelAndView("Address");
+	List<Category> categories=categoryDao.viewAllCategory();
+	List<Product> product = productDao.viewAllProduct();
+	mv.addObject("categoryList",categories);
+	mv.addObject("productList",product);
+	mv.addObject("key1",new UserAddress());
+	Principal p=request.getUserPrincipal();
+	String email=p.getName();
+	mv.addObject("listofAddres", userDao.getAllAddressByUserId(email));
+	
+	return mv;
+	}
+	
 } 
