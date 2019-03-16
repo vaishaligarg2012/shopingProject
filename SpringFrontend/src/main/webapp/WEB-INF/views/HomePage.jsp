@@ -16,7 +16,7 @@
     <li data-target="#demo" data-slide-to="2"></li>
   </ul>
 
-
+ 
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -122,3 +122,4 @@ img {width:100%;}
 
 
 
+	

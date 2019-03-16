@@ -1,6 +1,7 @@
 package com.frontend.controller;
 
 import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,15 +79,13 @@ public class PaymentController {
 		User userObj=userDao.getUserById(email);
 		UserAddress addressObj=userDao.getAddressById(addressId);
 	    Cart cart= cartDao.getCartByCustomer(email);
-	   
+	    
 	    List<Item> items = itemDao.getItemsListByCart(cart.getCartId());
 	    session.setAttribute("orderDetails",items);
-
 		session.setAttribute("addressToDeliver",addressObj);
-
-		//Order orderObj=cartDao.getCartByCustomer(email);
-
-
+		mv.addObject("OderID",cart.getCartId());
+		mv.addObject("customerEmail",cart.getCustomerId());
+		
 		mv.addObject("userObj",userObj);
 		mv.addObject("addressObj",addressObj);
 		return mv;
@@ -137,7 +136,11 @@ public class PaymentController {
 
 			return mv;   
 		}else {
-
+try {
+	
+}catch(Exception e) {
+	e.getStackTrace();
+}
 			ModelAndView mv= new ModelAndView("OrderPlaced");
 			mv.addObject("categoryList",categories);
 			mv.addObject("productList",product);
@@ -171,6 +174,19 @@ public class PaymentController {
 			Cart cart= cartDao.getCartByCustomer(email);
 			cartDao.deleteCart(cart.getCartId());
 
+			
+//			int size=0;
+//			Cart cartObj=cartDao.getCartByCustomer(email);
+//			
+//			if(cartObj!=null){
+//			Collection<Item> items=cartObj.getItems();
+//			for(Item item:items){
+//				size=size+item.getQunatity();
+//			}
+//			}
+//			
+//			session.setAttribute("items",size);
+//			
 			return mv;
 		}
 	} 

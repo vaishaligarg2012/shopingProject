@@ -13,6 +13,9 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.MVCStart.Models.Address;
 import com.MVCStart.Models.Cart;
@@ -20,6 +23,7 @@ import com.MVCStart.Models.Category;
 import com.MVCStart.Models.Item;
 import com.MVCStart.Models.Order;
 import com.MVCStart.Models.Payment;
+import com.MVCStart.Models.PersistentLogins;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.Supplier;
 import com.MVCStart.Models.User;
@@ -29,10 +33,10 @@ import com.MVCStart.Models.UserAddress;
 @EnableTransactionManagement 
 @ComponentScan(basePackages={"com.MVCStart"})
 public class DBConfig {  
-
+	DriverManagerDataSource dataSource= new DriverManagerDataSource();
+	
 	@Bean(name="dataSource")
 	public DataSource getDataSource() {
-		DriverManagerDataSource dataSource= new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
 		dataSource.setUrl("jdbc:h2:tcp://localhost/~/SpringMvcORMProject");
 		dataSource.setUsername("sa");
@@ -63,7 +67,7 @@ public class DBConfig {
 	    sb.addAnnotatedClass(Order.class);
 		sb.addAnnotatedClass(UserAddress.class);
 		sb.addAnnotatedClass(Payment.class);
-		//sb.addAnnotatedClass(OrderItems.class);
+		sb.addAnnotatedClass(PersistentLogins.class);
 		
 		System.out.println("Session Factory Created");
 		return sb.buildSessionFactory();
@@ -83,4 +87,21 @@ public class DBConfig {
 		System.out.println("Creating password Encoder"); 
 		return new BCryptPasswordEncoder();
 	}
+//	@Bean
+//	public PersistentTokenRepository persistentTokenRepository() {
+//		JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
+//		db.setDataSource(dataSource);
+//		return db;
+//	}
+//	
+//	@Bean
+//	public SavedRequestAwareAuthenticationSuccessHandler 
+//                savedRequestAwareAuthenticationSuccessHandler() {
+//		
+//               SavedRequestAwareAuthenticationSuccessHandler auth 
+//                    = new SavedRequestAwareAuthenticationSuccessHandler();
+//		auth.setTargetUrlParameter("targetUrl");
+//		return auth;
+//	}	
+	
 }

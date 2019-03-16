@@ -42,7 +42,7 @@
 					</a></div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form name='f' action="${loginUrl}" method='POST'>
+					<form name='f' action="${loginUrl}?targetUrl=${targetUrl}" method='POST'>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -57,7 +57,7 @@
 						</div>
 						<div class="form-group">
 							<div class="custom-control custom-checkbox">
-								<input type="checkbox" name="remember-me"  class="custom-control-input" id="customControlInline">
+								<input type="checkbox" name="remember-me" class="custom-control-input" id="customControlInline">
 								<label class="custom-control-label" for="customControlInline">Remember me</label>
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}"

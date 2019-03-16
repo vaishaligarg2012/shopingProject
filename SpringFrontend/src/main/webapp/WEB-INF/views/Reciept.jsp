@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-xs-12">
     		<div class="invoice-title">
-    			<h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+    			<h2>Invoice</h2><h3 class="pull-right">Order # ${OderID}</h3>
     		</div>
     		<hr>
     		<div class="row">
@@ -29,7 +29,7 @@
     				<address>
     					<strong>Payment Method:</strong><br>
     					Visa ending **** 4242<br>
-    					jsmith@email.com
+    					${customerEmail }
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
@@ -58,7 +58,7 @@
         							<td><strong>Item</strong></td>
         							<td class="text-center"><strong>Price</strong></td>
         							<td class="text-center"><strong>Quantity</strong></td>
-        							<td class="text-right"><strong>Totals</strong></td>
+        							<td class="text-right"><strong>Total</strong></td>
                                 </tr>
     						</thead>
     						<tbody>

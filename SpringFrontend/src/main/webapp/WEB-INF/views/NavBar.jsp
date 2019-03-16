@@ -40,7 +40,9 @@
 								<li><a href="${contextRoot}/login"><span
 										class="glyphicon glyphicon-log-in"></span> Login</a></li>
 							</sec:authorize>
-
+<sec:authorize access="isRememberMe()">
+	<!-- 	<h2># This user is login by "Remember Me Cookies".</h2>
+	 --></sec:authorize>
 							<sec:authorize access="isAuthenticated()">
 								<div
 									style="width: 100%; float: right; margin-top: -28px;">

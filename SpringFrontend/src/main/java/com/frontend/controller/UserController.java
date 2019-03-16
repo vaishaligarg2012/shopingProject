@@ -34,7 +34,7 @@ import com.MVCStart.Models.Payment;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.User;
 import com.MVCStart.Models.UserAddress;
-
+import org.springframework.util.StringUtils;
 @Controller
 public class UserController {
 
@@ -58,9 +58,25 @@ public class UserController {
 
 		List<Category> categories=categoryDao.viewAllCategory();
 		mv.addObject("categoryList",categories);
-
+		String targetUrl = getRememberMeTargetUrlFromSession(request);
+		System.out.println(targetUrl);
+		if(StringUtils.hasText(targetUrl)){
+			mv.addObject("targetUrl", targetUrl);
+			mv.addObject("loginUpdate", true);
+		}
+		
 		return mv; 
 	}
+	private String getRememberMeTargetUrlFromSession(HttpServletRequest request){
+		String targetUrl = "";
+		HttpSession session = request.getSession(false);
+		if(session!=null){
+			targetUrl = session.getAttribute("targetUrl")==null?""
+                             :session.getAttribute("targetUrl").toString();
+		}
+		return targetUrl;
+	}
+	
 
 	@RequestMapping(value="register", method=RequestMethod.GET)
 	public ModelAndView registerUser() {
