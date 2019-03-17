@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -58,24 +59,12 @@ public class UserController {
 
 		List<Category> categories=categoryDao.viewAllCategory();
 		mv.addObject("categoryList",categories);
-		String targetUrl = getRememberMeTargetUrlFromSession(request);
-		System.out.println(targetUrl);
-		if(StringUtils.hasText(targetUrl)){
-			mv.addObject("targetUrl", targetUrl);
-			mv.addObject("loginUpdate", true);
-		}
+
 		
-		return mv; 
+		return mv;   
 	}
-	private String getRememberMeTargetUrlFromSession(HttpServletRequest request){
-		String targetUrl = "";
-		HttpSession session = request.getSession(false);
-		if(session!=null){
-			targetUrl = session.getAttribute("targetUrl")==null?""
-                             :session.getAttribute("targetUrl").toString();
-		}
-		return targetUrl;
-	}
+	
+
 	
 
 	@RequestMapping(value="register", method=RequestMethod.GET)
@@ -96,6 +85,12 @@ public class UserController {
 		return mv;
 	}
 
+	@RequestMapping(value="errorPage", method=RequestMethod.GET)
+	public ModelAndView errorPage() {
+		ModelAndView mv = new ModelAndView("UserExceptionShowPage");
+		return mv;
+		
+	}
 	@RequestMapping(value="logout", method=RequestMethod.GET)
 	public String Logout(HttpServletRequest request,HttpServletResponse response) {
 		Authentication auth=SecurityContextHolder.getContext().getAuthentication();

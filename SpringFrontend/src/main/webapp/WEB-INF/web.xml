@@ -3,21 +3,21 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	  
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/myDispature-servlet.xml,/WEB-INF/spring-security.xml</param-value>
-</context-param>
-	     
 
-<listener>
-  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-</listener> 
-		  
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/myDispature-servlet.xml, /WEB-INF/spring-security.xml</param-value>
+	</context-param>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<servlet>
-		<servlet-name>myDispature</servlet-name>  
+		<servlet-name>myDispature</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  
+
 		<multipart-config>
 			<max-file-size>99971525</max-file-size>
 			<max-request-size>99943045</max-request-size>
@@ -29,8 +29,8 @@
 		<servlet-name>myDispature</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 
 
 
@@ -41,7 +41,7 @@
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
+	</filter-mapping>
 
-	
+
 </web-app>  

@@ -42,7 +42,7 @@
 					</a></div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form name='f' action="${loginUrl}?targetUrl=${targetUrl}" method='POST'>
+					<form name='f' action="<c:url value='/auth/login_check?targetUrl=${targetUrl}' />" method='POST'>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>

@@ -32,6 +32,7 @@ import com.MVCStart.Models.Payment;
 import com.MVCStart.Models.Product;
 import com.MVCStart.Models.User;
 import com.MVCStart.Models.UserAddress;
+import com.MVCStart.Services.EmailServices;
 
 @Controller
 public class PaymentController {
@@ -120,7 +121,8 @@ public class PaymentController {
 	}
 
 
-
+     @Autowired
+     EmailServices emailService;
 
 	@RequestMapping(value="proccedToPay", method=RequestMethod.POST)
 	public ModelAndView proccedToPay(@Valid @ModelAttribute("key2")Payment payment,
@@ -136,11 +138,7 @@ public class PaymentController {
 
 			return mv;   
 		}else {
-try {
-	
-}catch(Exception e) {
-	e.getStackTrace();
-}
+
 			ModelAndView mv= new ModelAndView("OrderPlaced");
 			mv.addObject("categoryList",categories);
 			mv.addObject("productList",product);
@@ -173,20 +171,8 @@ try {
 			String email=p1.getName();
 			Cart cart= cartDao.getCartByCustomer(email);
 			cartDao.deleteCart(cart.getCartId());
-
+			emailService.sendThankuMsg(user, "Your order has been processed succesfully");
 			
-//			int size=0;
-//			Cart cartObj=cartDao.getCartByCustomer(email);
-//			
-//			if(cartObj!=null){
-//			Collection<Item> items=cartObj.getItems();
-//			for(Item item:items){
-//				size=size+item.getQunatity();
-//			}
-//			}
-//			
-//			session.setAttribute("items",size);
-//			
 			return mv;
 		}
 	} 

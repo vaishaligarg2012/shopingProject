@@ -37,7 +37,7 @@ public class ProductController {
 	CategoryDao categoryDao;
 	@Autowired
 	SupplierDao supplierDao;
-	@Autowired
+	@Autowired  
 	HttpSession session;
 	@Autowired
 	ProductCategorySelectValidation categoryDropDownProduct;
@@ -57,7 +57,7 @@ public class ProductController {
 		mv.addObject("saveBtn", "Save");
 		return mv;       	 
 	}
-
+  
 	@RequestMapping(value="submitProduct" , method=RequestMethod.POST)
 	public ModelAndView createProduct(@Valid @ModelAttribute("productObj") Product product, BindingResult result) {
 		categoryDropDownProduct.validate(product, result);
@@ -65,7 +65,7 @@ public class ProductController {
 
 		if(product.getProductId()==0) {
 			productImageValidator.validate(product, result);
-		}
+		}  
 
 		ModelAndView mv=null;
 		if(result.hasErrors()) {

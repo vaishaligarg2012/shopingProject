@@ -24,7 +24,7 @@ public class SupplierController {
 	public ModelAndView showSupplierPage() {
 		
     	Supplier supplier=new Supplier();
-		Address address = new Address();
+		Address address = new Address();   
 		
 		supplier.setAddress(address);
 		

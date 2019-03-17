@@ -51,7 +51,7 @@
 											<span> <img src="${design}/user.png"
 												style="height: 5%; width: 9%;" alt="User"></span>${sessionScope.user.fName}
 											${sessionScope.user.lName}
-									</a></span> <span><a href="${contextRoot}/logout"
+									</a></span> <span><a href="<c:out value='logout'/>"
 										style="padding: 6px; font-size: medium; font-style: unset; font-family: cursive; color: red; font-weight: bold;"><span
 											class="fa fa-sign-out" style="font-size: 19px; color: red"></span>
 											Logout</a></span>

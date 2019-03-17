@@ -32,7 +32,7 @@ import com.MVCStart.Models.User;
 public class CategoryController {
 	@Autowired
 	CategoryDao categoryDao;
-
+ 
 	@Autowired
 	ProductDao productDao;
 	
@@ -57,7 +57,7 @@ public class CategoryController {
 		mv.addObject("categoryList",categories);
 		mv.addObject("productList",product);
 		
-			
+			  
 		Principal p=request.getUserPrincipal();
 		if(p==null) {
 			System.out.println("PRincipal is null");
@@ -84,6 +84,7 @@ public class CategoryController {
 			
 			
 		}
+		
 		return mv; 
 	}
 
@@ -145,7 +146,7 @@ public class CategoryController {
 		mv.addObject("op","Edit");
 		mv.addObject("submitUpdateOrAdd","update");
 		return mv;
-	}
+	} 
 
 	@RequestMapping(value="update", method=RequestMethod.POST)
 	public ModelAndView updateCategory(@ModelAttribute("key12") Category cat) {
@@ -162,8 +163,5 @@ public class CategoryController {
 	
 	
 
-	public void getAllCategorySupplierAndProduct() {
-		
-	}
 }
 

@@ -8,23 +8,36 @@
 		http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/security
-		http://www.springframework.org/schema/security/spring-security.xsd">
+		http://www.springframework.org/schema/security/spring-security.xsd"> 
 	<http pattern="/resources/**" security="none" />
-	<http use-expressions="true" auto-config="true">
+
+	<!-- <http use-expressions="true" auto-config="true"> <intercept-url pattern="/addToCart/**" 
+		access="hasAuthority('User')" /> <form-login login-page="/login" username-parameter="ssoId" 
+		password-parameter="password" authentication-failure-url="/errorPage" authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler"/> 
+		<csrf /> <access-denied-handler error-page="/access-denied" /> enable remember 
+		me <remember-me token-validity-seconds="1209600" remember-me-parameter="remember-me" 
+		data-source-ref="dataSource" /> <remember-me key="remember-me" data-source-ref="dataSource"/> 
+		</http> -->
+	<http auto-config="true" use-expressions="true">
+
 		<intercept-url pattern="/addToCart/**"
 			access="hasAuthority('User')" />
-		<form-login login-page="/login" username-parameter="ssoId"
+
+		<form-login login-page="/login"
+			authentication-failure-url="/login?error" username-parameter="ssoId"
 			password-parameter="password"
-			authentication-failure-url="/access-denied" />
+			login-processing-url="/auth/login_check"
+			authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler" />
+
+		<logout logout-success-url="/logout" logout-url="/logout"
+			delete-cookies="JSESSIONID" />
 		<csrf />
-		<access-denied-handler
-			error-page="/access-denied" />
+  
 		<!-- enable remember me -->
 		<remember-me token-validity-seconds="1209600"
 			remember-me-parameter="remember-me" data-source-ref="dataSource" />
 	</http>
-
-
+  
 
 	<authentication-manager>
 		<authentication-provider>
