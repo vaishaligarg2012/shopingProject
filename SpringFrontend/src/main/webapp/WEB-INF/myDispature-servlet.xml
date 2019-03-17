@@ -9,8 +9,10 @@
                     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 
-	<context:component-scan base-package="com.frontend" />
-	<context:component-scan base-package="com.MVCStart" />
+	<context:component-scan
+		base-package="com.frontend" />
+	<context:component-scan
+		base-package="com.MVCStart" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
@@ -23,6 +25,17 @@
 		<property name="basename" value="classpath:message" />
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
 	<mvc:annotation-driven />
 	<mvc:resources location="/resources/"
 		mapping="/resources/**" />
@@ -39,5 +52,5 @@
 		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
 		<property name="targetUrlParameter" value="targetUrl" />
 	</bean>
-</beans>          
+</beans>           
  

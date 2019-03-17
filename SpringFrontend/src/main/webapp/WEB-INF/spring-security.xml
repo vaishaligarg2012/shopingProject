@@ -11,11 +11,14 @@
 		http://www.springframework.org/schema/security/spring-security.xsd"> 
 	<http pattern="/resources/**" security="none" />
 
-	<!-- <http use-expressions="true" auto-config="true"> <intercept-url pattern="/addToCart/**" 
-		access="hasAuthority('User')" /> <form-login login-page="/login" username-parameter="ssoId" 
+	<!-- <http use-expressions="true" auto-config="true">
+	 <intercept-url pattern="/addToCart/**" 
+		access="hasAuthority('User')" />
+		 <form-login login-page="/login" username-parameter="ssoId" 
 		password-parameter="password" authentication-failure-url="/errorPage" authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler"/> 
-		<csrf /> <access-denied-handler error-page="/access-denied" /> enable remember 
-		me <remember-me token-validity-seconds="1209600" remember-me-parameter="remember-me" 
+		<csrf />
+		 <access-denied-handler error-page="/access-denied" /> 
+		 enable remember me <remember-me token-validity-seconds="1209600" remember-me-parameter="remember-me" 
 		data-source-ref="dataSource" /> <remember-me key="remember-me" data-source-ref="dataSource"/> 
 		</http> -->
 	<http auto-config="true" use-expressions="true">
