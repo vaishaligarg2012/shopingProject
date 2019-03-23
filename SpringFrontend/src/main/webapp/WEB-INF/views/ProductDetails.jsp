@@ -72,39 +72,20 @@
 					<!-- item-property-hor .// -->
 
 					<hr>
-					<div class="row">
-						<div class="col-sm-5">
-							<dl class="param param-inline">
-								<dt>Quantity:</dt>
-								<dd>
-									<div class="input-group">
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-danger btn-number"
-												data-type="minus" data-field="quant[2]">
-												<span class="glyphicon glyphicon-minus"></span>
-											</button>
-										</span> <input type="text" name="quant[2]"
-											class="form-control input-number" value="1" min="1"
-											max="100"> <span class="input-group-btn">
-											<button type="button" class="btn btn-success btn-number"
-												data-type="plus" data-field="quant[2]">
-												<span class="glyphicon glyphicon-plus"></span>
-											</button>
-										</span>
-									</div>
-							</dl>
-							<!-- item-property .// -->
-						</div>
-						<!-- col.// -->
-					</div>
-					<!-- row.// -->
-					<hr>
-					<a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy
-						now </a> <a
+					
+					<hr> 
+					<c:if test="${productObj.quantity gt 0}">							
+											
+					<a
 						href="${contextRoot}/addToCart/${productDetails.productId}"
 						class="btn btn-lg btn-primary text-uppercase"> <i
 						class="fas fa-shopping-cart"></i> Add to cart
 					</a>
+					</c:if>
+					<c:if test="${productObj.quantity lt 1}">							
+												<h4>Out of Stock</h4>
+											</c:if>						
+									
 				</article>
 				<!-- card-body.// -->
 			</aside>

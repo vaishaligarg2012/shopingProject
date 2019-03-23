@@ -163,10 +163,15 @@
 										</div>
 										<div class="col">
 
+											
+											<c:if test="${productObj.quantity gt 0}">							
 											<a class="btn btn-success"
 												href="${contextRoot}/addToCart/${productObj.productId}"><i
 												class="fas fa-shopping-cart">Add to cart</i></a>
-
+											</c:if>
+											<c:if test="${productObj.quantity lt 1}">							
+												<h4>Out of Stock</h4>
+											</c:if>						
 										</div>
 									</div>
 								</div>

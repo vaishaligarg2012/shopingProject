@@ -200,7 +200,7 @@ public class CartController {
 		}else {
 			 mv.addObject("msg","out of stock");
 		}
-			 Principal p = request.getUserPrincipal();
+			Principal p = request.getUserPrincipal();
 			String userEmail = p.getName();
 			mv.addObject("categoryList",categories);
 			mv.addObject("productList",product);
