@@ -41,12 +41,12 @@
 		mapping="/resources/**" />
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView"
 			value="UserExceptionShowPage" />
 	</bean>
-	<!-- If request parameter "targetUrl" is existed, then forward to this url -->
+	 --><!-- If request parameter "targetUrl" is existed, then forward to this url -->
 	<!-- For update login form -->
 	<bean id="savedRequestAwareAuthenticationSuccessHandler"
 		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">

@@ -26,9 +26,8 @@
 				modelAttribute="key2" role="form">
 <ul style="float: right;" class="nav nav-pills nav-stacked">
 					<li  class="active"><a href="#"><span
-							class="badge pull-right"><span
-								class="glyphicon glyphicon-usd"></span>${grandTotal}</span> Final
-							Payment</a></li>
+							class="badge pull-right"></span> Final
+							Payment ${grandTotal}</a></li>
 				</ul>
 
 				<div class="panel panel-default">

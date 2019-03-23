@@ -5,7 +5,7 @@
 	scope="session" />
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url value="/resources/design" var="design" scope="session" />
-   
+
 <nav class="navbar navbar-expand-sm  bg-light border "
 	style="margin-bottom: 0px">
 	<div class="container">
@@ -40,12 +40,12 @@
 								<li><a href="${contextRoot}/login"><span
 										class="glyphicon glyphicon-log-in"></span> Login</a></li>
 							</sec:authorize>
-<sec:authorize access="isRememberMe()">
-	<!-- 	<h2># This user is login by "Remember Me Cookies".</h2>
-	 --></sec:authorize>
+							<sec:authorize access="isRememberMe()">
+								<!-- 	<h2># This user is login by "Remember Me Cookies".</h2>
+	 -->
+							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
-								<div
-									style="width: 100%; float: right; margin-top: -28px;">
+								<div style="width: 100%; float: right; margin-top: -28px;">
 									<span><a
 										style="font-size: medium; font-style: unset; font-family: cursive; font-weight: bold;">
 											<span> <img src="${design}/user.png"
@@ -56,15 +56,17 @@
 											class="fa fa-sign-out" style="font-size: 19px; color: red"></span>
 											Logout</a></span>
 									<sec:authorize access="hasAuthority('User')">
-										<span>
-										<a href="${contextRoot}/addToCart/viewCart"><span><i
+										<span> <a href="${contextRoot}/addToCart/viewCart"><span><i
 													class="fa fa-shopping-cart" style="font-size: 28px;"
-													aria-hidden="true"></i> </span>
-										</a></span><div style="margin-top: -44px;margin-left: 234px;" ><b style="color: brown;font-weight: 600;font-size: 21px;">${sessionScope.items}</b><b style="padding-left: 6px;">Cart</b></div>
+													aria-hidden="true"></i> </span> </a></span>
+										<div style="margin-top: -44px; margin-left: 234px;">
+											<b style="color: brown; font-weight: 600; font-size: 21px;">${sessionScope.items}</b><b
+												style="padding-left: 6px;">Cart</b>
+										</div>
 									</sec:authorize>
 
 								</div>
- 
+
 
 							</sec:authorize>
 

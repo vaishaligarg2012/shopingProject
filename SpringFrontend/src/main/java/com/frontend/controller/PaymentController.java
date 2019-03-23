@@ -161,16 +161,24 @@ public class PaymentController {
 			order.setTotalAmountPaid(new CartController().getGrandTotal(userEmail,cartDao.getCartByCustomer(userEmail)));
 			mv.addObject("grandTotal",grandTotal);
 			//session.setAttribute("grandTotal", grandTotal);
-
-
-			payment.setOrderId(order);
-
-
-			paymentDao.addPayments(payment);
+            payment.setOrderId(order);
+            paymentDao.addPayments(payment);
 			Principal p1=request.getUserPrincipal();
 			String email=p1.getName();
 			Cart cart= cartDao.getCartByCustomer(email);
-			cartDao.deleteCart(cart.getCartId());
+			System.out.println("some f "+cart.getCartId());
+		    Item i = itemDao.getItemByItemId(cart.getCartId());
+		    Collection<Item> items = cart.getItems();
+		    
+		    for(Item cartList: items) {
+		    int UpdatedQuantity = (cartList.getProduct().getQuantity()) - (cartList.getQunatity());
+		    Product Obj12=cartList.getProduct();
+		    Obj12.setQuantity(UpdatedQuantity);
+		    productDao.updateProduct(Obj12);
+		     System.out.println("UpdatedQuantity "+UpdatedQuantity);
+		    }
+		     cartDao.deleteCart(cart.getCartId());
+			
 			emailService.sendThankuMsg(user, "Your order has been processed succesfully");
 			
 			return mv;
